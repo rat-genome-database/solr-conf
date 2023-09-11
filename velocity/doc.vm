@@ -451,3 +451,22 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
   <a href="#" onclick='jQuery(this).siblings("pre").toggle(); return false;'>toggle explain</a>
   <pre style="display:none">$response.getExplainMap().get($doc.getFirstValue('id'))</pre>
 #end
+
+
+~~~~~~~ PMC Annotations
+#if ($doc.getFieldValue('gene_pmc'))
+#set ($genes=$doc.getFieldValue('gene_pmc'))
+#set ($genes_count=$doc.getFieldValue('gene_count_pmc'))
+#set ($genes_pos = $doc.getFieldValue('gene_pos_pmc'))
+<div>Genes:
+#set ($value_length = $genes.size() - 1)
+#foreach ($i in [0..$value_length])
+#set ($gene=$genes.get($i))
+#set ($count_value=$genes_count.get($i))
+#set ($pos_value=$genes_pos.get($i))
+<span class="highlight-gene" >$gene</span>&nbsp;&nbsp;&nbsp;
+#end
+</div>
+#end
+
+
