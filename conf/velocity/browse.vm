@@ -19,7 +19,7 @@ Filters: <a href="javascript:facetQueryPath(0)">All</a>
           #set ($fieldName=$fq.substring(0, $fq.indexOf(':')))
           #set ($fieldType=$fieldName.substring($math.sub($fieldName.length(),3), $fieldName.length()))
           #set ($fieldValue=$fq.substring($math.add($fq.indexOf(':'),2), $math.sub($fq.length(),1)))
-
+          <h1>$fieldValue</h1>
           #if($fieldType && $fieldType == "_id" && $fieldValue != '*')
               #set($fieldValue=$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
           #end
@@ -32,6 +32,7 @@ Filters: <a href="javascript:facetQueryPath(0)">All</a>
         #end
         #end
       #end
+      
     </div>
 #if($response.response.spellcheck.suggestions and $response.response.spellcheck.suggestions.size() > 0)
   Did you mean <a href="#url_for_home?q=$esc.url($response.response.spellcheck.suggestions.collation)#if($list.size($request.params.getParams('fq')) > 0)&#fqs($request.params.getParams('fq'))#end#debug">$response.response.spellcheck.suggestions.collation</a>?
