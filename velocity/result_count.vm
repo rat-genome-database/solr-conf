@@ -1,4 +1,0 @@
-#set($term_count=$response.results.size())
-$term_count
-
-

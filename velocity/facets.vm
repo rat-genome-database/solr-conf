@@ -1,7 +1,0 @@
-#parse('facet_ranges.vm')
-#parse('facet_fields.vm')  
-##parse('facet_queries.vm')
-##parse('cluster.vm')        
-
-
-
