@@ -30,10 +30,10 @@ Query condition: <span style="color:brown;">$request.params.get('message_label')
                      #set ($fieldValue=$fq.substring($math.add($fq.indexOf(':'),2), $math.sub($fq.length(),1)))
 
                      #if($fieldType && $fieldType == "_id" && $fieldValue != '*')
-                         #set($fieldValue=$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
+                         #set($fieldValue=$import.read("https://dev.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
                      #end
-                     #set($fq=$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+": "+$fieldValue)
-                    ###set($fq=$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+":"+$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
+                     #set($fq=$import.read("https://dev.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+": "+$fieldValue)
+                    ###set($fq=$import.read("https://dev.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+":"+$import.read("https://dev.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
                  #if ($velocityCount < $params.getParams('fq').size())
                      &gt; <a href="javascript:facetQueryPath($previous_fq_count)">$fq</a>
                   #else
