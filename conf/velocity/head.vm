@@ -27,12 +27,12 @@
 
   <link rel="stylesheet" type="text/css" href="#{url_for_solr}/admin/file?file=/velocity/main.css&contentType=text/css"/-->
 
-<!--script type="text/javascript" src="/solr/files/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="/solr/files/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/solr/files/jquery-ui.css" />
-  <script type="text/javascript" src="/solr/files/jquery.highlight-3.js"></script>
+<!--script type="text/javascript" src="/solr/OntoMate/files/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="/solr/OntoMate/files/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/solr/OntoMate/files/jquery-ui.css" />
+  <script type="text/javascript" src="/solr/OntoMate/files/jquery.highlight-3.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="/solr/files/main.css"/-->
+  <link rel="stylesheet" type="text/css" href="/solr/OntoMate/files/main.css"/-->
 
 <script type="text/javascript" src="/QueryBuilder/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/QueryBuilder/js/jquery-ui-1.12.1/jquery-ui.js"></script>

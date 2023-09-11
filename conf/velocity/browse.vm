@@ -177,7 +177,7 @@ function resubmitQuery() {
 }
 </script>
 
-<form id="queryForm" action="/solr/browse" method="post">
+<form id="queryForm" action="/solr/OntoMate/browse" method="post">
  <input type="hidden" name="q" value = '$request.params.get("q")'/>
  <input id="start" type="hidden" name="start" value = '$request.params.get("start")'/>
  <input id="sortCond" type="hidden" name="sort" value = "$request.params.get('sort')"/>
