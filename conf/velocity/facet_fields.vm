@@ -3,7 +3,7 @@
 <div id="facet_tabs">
 <ul>
     #foreach($field in $response.facetFields)
-        <li style="font-size:10"><font size="1"><a href="#$field.name">$import.read("https://dev.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$field.name%22)")</a></font></li>
+        <li style="font-size:10;font size:1"><a href="$field.name">$import.read("https://dev.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$field.name%22)")</a></font></li>
     #end
 </ul>
     #foreach($field in $response.facetFields)
