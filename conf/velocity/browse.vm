@@ -21,15 +21,14 @@ Filters: <a href="javascript:facetQueryPath(0)">All</a>
           #set ($fieldValue=$fq.substring($math.add($fq.indexOf(':'),2), $math.sub($fq.length(),1)))
 
           #if($fieldType && $fieldType == "_id" && $fieldValue != '*')
-              ###set($fieldValue=$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
-              #set($fieldValue="javascript:readFromOntoSolr($fieldValue)")
+              #set($fieldValue=$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
           #end
-              ###set($fq=$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+": "+$fieldValue)
-            #set($fq="javascript:readFromOntoSolr($fieldName)"+": "+$fieldValue)
+              #set($fq=$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+": "+$fieldValue)
+              ###set($fq=$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+":"+$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
         #if ($previous_fq_count < $params.getParams('fq').size())
-          <a href="javascript:facetQueryPath($previous_fq_count)">$fq</a>
+          &gt; <a href="javascript:facetQueryPath($previous_fq_count)">$fq</a>
         #else
-          $fq
+          &gt; $fq
         #end
         #end
       #end
@@ -90,9 +89,6 @@ function setAnn(pmid, aspect, data) {
         //results = regex.exec(location.search);
     //return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 //}
-function readFromOntoSolr(fieldValue) {
-    $.ajax({url:"http://dev.rgd.mcw.edu:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22"+fieldValue+"%22)", dataType:'jsonp'});
-}
 function getAnn(pmid, aspect) {
   $.ajax({url:"https://rgd.mcw.edu/rgdweb/webservice/refAnnots.html?pmid="+pmid+"&aspect="+aspect+"&jsonp="+aspect+"_"+pmid, dataType: 'jsonp'});
 }
