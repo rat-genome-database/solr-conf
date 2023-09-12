@@ -44,10 +44,18 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 </script>
 
 #if($response.response.highlighting.get($docId).get('abstract').get(0))
-#set( $abstract_text = $!response.response.highlighting.get($docId).get('abstract').get(0))
+  #set( $abstract_text = $!response.response.highlighting.get($docId).get('abstract').get(0))
+#end
+#if($response.response.highlighting.get($docId).get('pmcabstract').get(0))
+  #set( $abstract_text = $!response.response.highlighting.get($docId).get('pmcabstract').get(0))
+#else
+  #if( $doc.getFieldValue('abstract').length>0)
+    #set( $abstract_text = $doc.getFieldValue('abstract'))
   #else
-#set( $abstract_text = $doc.getFieldValue('abstract'))
+    #set( $abstract_text = $doc.getFieldValue('pmcabstract'))
   #end
+#end
+
 #set( $mesh_text = $doc.getFieldValue('mesh_terms'))
 ###set( $epub_date = $dateTool.format("MMM dd yyyy", $doc.getFieldValue('epub_date')))
 ###set( $j_date = $doc.getFieldValue('j_date_s'))
