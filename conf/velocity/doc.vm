@@ -63,18 +63,21 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 <div>#field('citation')</div>
 <div id="til_$pmid" style="font-size:15;color:blue;">#field('title')</div>
 <div>#field('authors')</div>
-      #if ($abstract_text.length() > 0 || $doc.getFieldValue('mesh_terms')) 
-<div><font size=3><br>ABSTRACT <input type="button" value="show" onclick="if ($(this).val() == 'hide'){$(this).val('show');$('#abs_$pmid').hide('fast');} else {$(this).val('hide');$('#abs_$pmid').show('fast');}"></input><br><br></font> 
-<div id="abs_$pmid" class="result-citation" style="display: none">
-</span><div id="abstext_$pmid" style="abs_body">$abstract_text.replaceAll('\n', '')</div>
-#if ($doc.getFieldValue('mesh_terms'))
-<font size=2>MeSH Terms: </font>#field('mesh_terms')
+#if($!abstract_text)
+
+#if($abstract_text.length() > 0 || $doc.getFieldValue('mesh_terms'))
+  <div><font size=3><br>ABSTRACT <input type="button" value="show" onclick="if ($(this).val() == 'hide'){$(this).val('show');$('#abs_$pmid').hide('fast');} else {$(this).val('hide');$('#abs_$pmid').show('fast');}"></input><br><br></font>
+  <div id="abs_$pmid" class="result-citation" style="display: none">
+  <span><div id="abstext_$pmid" style="abs_body">$abstract_text.replaceAll('\n', '')</div>
+  #if ($doc.getFieldValue('mesh_terms'))
+  <font size=2>MeSH Terms: </font>#field('mesh_terms')
+  #end
+  <br>
+  <br>
+  </span>
+  </div>
+  </div>
 #end
-<br>
-<br>
-</span>
-</div>
-</div>
 #end
 --------------------------------
 #if ($doc.getFieldValue('rdo_id'))
