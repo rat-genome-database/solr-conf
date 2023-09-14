@@ -55,8 +55,8 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
     #set( $abstract_text = $doc.getFieldValue('abstract'))
   #else
     #if($doc.getFieldValue('pmcabstract').length>0)
+      #set( $abstract_text = $doc.getFieldValue('pmcabstract'))
     #end
-    #set( $abstract_text = $doc.getFieldValue('pmcabstract'))
   #end
 
 
@@ -67,7 +67,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 <div>#field('citation')</div>
 <div id="til_$pmid" style="font-size:15;color:blue;">#field('title')</div>
 <div>#field('authors')</div>
-#if($!abstract_text)
+
 
 #if($abstract_text.length() > 0 || $doc.getFieldValue('mesh_terms'))
   <div><font size=3><br>ABSTRACT <input type="button" value="show" onclick="if ($(this).val() == 'hide'){$(this).val('show');$('#abs_$pmid').hide('fast');} else {$(this).val('hide');$('#abs_$pmid').show('fast');}"></input><br><br></font>
@@ -82,7 +82,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
   </div>
   </div>
 #end
-#end
+
 --------------------------------
 #if ($doc.getFieldValue('rdo_id'))
 #set ($rdo_id_values = $doc.getFieldValue('rdo_id'))
