@@ -42,24 +42,16 @@ function D_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 function F_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')", "F", data); }
 function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')", "P", data); }
 </script>
-
 #if($response.response.highlighting.get($docId).get('abstract').get(0))
   #set( $abstract_text = $!response.response.highlighting.get($docId).get('abstract').get(0))
-  #else
-  #if($response.response.highlighting.get($docId).get('pmcabstract').get(0))
-    #set( $abstract_text = $!response.response.highlighting.get($docId).get('pmcabstract').get(0))
-  #end
+#else
+  #set( $abstract_text = $doc.getFieldValue('abstract'))
 #end
-
-  #if( $doc.getFieldValue('abstract').length>0)
-    #set( $abstract_text = $doc.getFieldValue('abstract'))
-  #else
-    #if($doc.getFieldValue('pmcabstract').length>0)
-      #set( $abstract_text = $doc.getFieldValue('pmcabstract'))
-    #end
-  #end
-
-
+#if($response.response.highlighting.get($docId).get('pmcabstract').get(0))
+  #set( $abstract_text = $!response.response.highlighting.get($docId).get('pmcabstract').get(0))
+#else
+  #set( $abstract_text = $doc.getFieldValue('pmcabstract'))
+#end
 #set( $mesh_text = $doc.getFieldValue('mesh_terms'))
 ###set( $epub_date = $dateTool.format("MMM dd yyyy", $doc.getFieldValue('epub_date')))
 ###set( $j_date = $doc.getFieldValue('j_date_s'))
@@ -67,22 +59,19 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 <div>#field('citation')</div>
 <div id="til_$pmid" style="font-size:15;color:blue;">#field('title')</div>
 <div>#field('authors')</div>
-
-
-#if($abstract_text.length() > 0 || $doc.getFieldValue('mesh_terms'))
-  <div><font size=3><br>ABSTRACT <input type="button" value="show" onclick="if ($(this).val() == 'hide'){$(this).val('show');$('#abs_$pmid').hide('fast');} else {$(this).val('hide');$('#abs_$pmid').show('fast');}"></input><br><br></font>
+#if ($abstract_text.length() > 0 || $doc.getFieldValue('mesh_terms'))
+<div><font size=3><br>ABSTRACT <input type="button" value="show" onclick="if ($(this).val() == 'hide'){$(this).val('show');$('#abs_$pmid').hide('fast');} else {$(this).val('hide');$('#abs_$pmid').show('fast');}"></input><br><br></font>
   <div id="abs_$pmid" class="result-citation" style="display: none">
-  <span><div id="abstext_$pmid" style="abs_body">$abstract_text.replaceAll('\n', '')</div>
-  #if ($doc.getFieldValue('mesh_terms'))
-  <font size=2>MeSH Terms: </font>#field('mesh_terms')
-  #end
-  <br>
-  <br>
-  </span>
+    </span><div id="abstext_$pmid" style="abs_body">$abstract_text.replaceAll('\n', '<br><br>')</div>
+    #if ($doc.getFieldValue('mesh_terms'))
+      <font size=2>MeSH Terms: </font>#field('mesh_terms')
+    #end
+    <br>
+    <br>
+    </span>
   </div>
-  </div>
+</div>
 #end
-
 --------------------------------
 #if ($doc.getFieldValue('rdo_id'))
 #set ($rdo_id_values = $doc.getFieldValue('rdo_id'))
