@@ -150,6 +150,15 @@
    <field name="p_type" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="issn" type="string" indexed="true" stored="true" multiValued="false"/>
 
+<field name="p_date_pmc" type="date" indexed="true" stored="true" multiValued="false"/>
+   <field name="j_date_s_pmc" type="string" indexed="true" stored="true" multiValued="false"/>
+   <field name="p_year_pmc" type="int" indexed="true" stored="true" multiValued="false"/>
+   <field name="authors_pmc" type="text_general" indexed="true" stored="true" termVectors="true" termPositions="true" termOffsets="true"/>
+   <field name="citation_pmc" type="text_general" indexed="true" stored="true"/>
+   <field name="affiliation_pmc" type="text" indexed="true" stored="true" multiValued="true"/>
+   <field name="affiliation_s_pmc" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="p_type_pmc" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="issn_pmc" type="string" indexed="true" stored="true" multiValued="false"/>
 
    <!-- catchall field, containing all other searchable text fields (implemented
         via copyField further on in this schema  -->
@@ -172,29 +181,52 @@
 
    <field name="xdb_term" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="xdb_id" type="string" indexed="true" stored="true" multiValued="true"/>
+
+    <field name="xdb_term_pmc" type="string" indexed="true" stored="true" multiValued="true"/>
+      <field name="xdb_id_pmc" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="rdo_term" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="rdo_id" type="string" indexed="true" stored="true" multiValued="true"/>
+
+   <field name="rdo_term_pmc" type="text" indexed="true" stored="true" multiValued="true"/>
+      <field name="rdo_id_pmc" type="string" indexed="true" stored="true" multiValued="true"/>
+
    <field name="rs_term" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="rs_id" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="rs_term_pmc" type="text" indexed="true" stored="true" multiValued="true"/>
+      <field name="rs_id_pmc" type="string" indexed="true" stored="true" multiValued="true"/>
+
    <field name="gene" type="gene_text" indexed="true" stored="true" multiValued="true" omitNorms="true"/>
    <field name="gene_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="gene_pmc" type="gene_text" indexed="true" stored="true" multiValued="true" omitNorms="true"/>
    <field name="gene_s_pmc" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="rgd_obj_term" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="rgd_obj_id" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="rgd_obj_term_pmc" type="string" indexed="true" stored="true" multiValued="true"/>
+      <field name="rgd_obj_id_pmc" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="organism_term" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="organism_term_s" type="string" indexed="true" stored="true" multiValued="true"/>
- <field name="organism_common_name" type="text" indexed="true" stored="true" multiValued="true"/>
 
-   <field name="organism_ncbi_id" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="organism_term_pmc_s" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="organism_term_pmc" type="text" indexed="true" stored="true" multiValued="true"/>
+
+ <field name="organism_common_name" type="text" indexed="true" stored="true" multiValued="true"/>
+<field name="organism_ncbi_id" type="string" indexed="true" stored="true" multiValued="true"/>
+
+<field name="organism_common_name_pmc" type="text" indexed="true" stored="true" multiValued="true"/>
+<field name="organism_ncbi_id_pmc" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="mt_term" type="gene_text" indexed="true" stored="true" multiValued="true"/>
    <field name="mt_id" type="lowerstring" indexed="true" stored="true" multiValued="true"/>
    <field name="mt_term_s" type="string" indexed="true" stored="true" multiValued="true"/>
 
+<field name="mt_term_pmc" type="gene_text" indexed="true" stored="true" multiValued="true"/>
+   <field name="mt_id_pmc" type="lowerstring" indexed="true" stored="true" multiValued="true"/>
+   <field name="mt_term_s_pmc" type="string" indexed="true" stored="true" multiValued="true"/>
+
    <field name="zfa_term" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="zfa_id" type="string" indexed="true" stored="true" multiValued="true"/>
 
-
+ <field name="zfa_term_pmc" type="text" indexed="true" stored="true" multiValued="true"/>
+   <field name="zfa_id_pmc" type="string" indexed="true" stored="true" multiValued="true"/>
 
    <dynamicField name="*_count"  type="int"    indexed="false"  stored="true" multiValued="true"/>
    <dynamicField name="*_term"  type="text"    indexed="true"  stored="true" multiValued="true"/>
@@ -250,20 +282,34 @@
 
    <copyField source="gene" dest="gene_s"/>
    <copyField source="organism_term" dest="organism_term_s"/>
+
+   <copyField source="gene_pmc" dest="gene_s"/>
+      <copyField source="organism_term_pmc" dest="organism_term_s"/>
    <copyField source="affiliation" dest="affiliation_s"/>
    <copyField source="mt_term" dest="mt_term_s"/>
+ <copyField source="mt_term_pmc" dest="mt_term_s"/>
 
    <copyField source="bp_id" dest="go_id"/>
    <copyField source="bp_term" dest="go_term"/>
    <copyField source="bp_count" dest="go_count"/>
+<copyField source="bp_id_pmc" dest="go_id"/>
+   <copyField source="bp_term_pmc" dest="go_term"/>
+   <copyField source="bp_count_pmc" dest="go_count"/>
 
    <copyField source="mf_id" dest="go_id"/>
    <copyField source="mf_term" dest="go_term"/>
    <copyField source="mf_count" dest="go_count"/>
+<copyField source="mf_id_pmc" dest="go_id"/>
+   <copyField source="mf_term_pmc" dest="go_term"/>
+   <copyField source="mf_count_pmc" dest="go_count"/>
 
-   <copyField source="cc_id" dest="go_id"/>
-   <copyField source="cc_term" dest="go_term"/>
-   <copyField source="cc_count" dest="go_count"/>
+    <copyField source="cc_id" dest="go_id"/>
+      <copyField source="cc_term" dest="go_term"/>
+      <copyField source="cc_count" dest="go_count"/>
+
+   <copyField source="cc_id_pmc" dest="go_id"/>
+   <copyField source="cc_term_pmc" dest="go_term"/>
+   <copyField source="cc_count_pmc" dest="go_count"/>
 
 <uniqueKey>pmid</uniqueKey>
 
