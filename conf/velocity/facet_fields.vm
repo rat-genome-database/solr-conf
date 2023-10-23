@@ -3,8 +3,8 @@
 <div id="facet_tabs">
     <ul>
         #foreach($field in $response.facetFields)
-            <li style="font-size:10"><font size="1"><a href="#$field.name">$field.name###$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$field.name%22)")
- </a></font></li>
+            <li style="font-size:10"><font size="1"><a href="#$field.name" id="facet$field.name">$field.name  ###$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$field.name%22)")
+            </a></font></li>
         #end
     </ul>
     #foreach($field in $response.facetFields)
@@ -17,8 +17,8 @@
                 #foreach($facet in $field.values)
                     <li>
                         #if($fieldType && $fieldType == "_id")
-                            <a href="javascript:facetQuery('$field.name', '$facet.name')">$field.name ##$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$facet.name%22)")
-                             </a> ($number.format("#*,*",$facet.count))
+                            <a href="javascript:facetQuery('$field.name', '$facet.name')">$field.name  ###$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$facet.name%22)")
+                            </a> ($number.format("#*,*",$facet.count))
                         #else
 
                             <a href="javascript:facetQuery('$field.name', '$facet.name')">$facet.name</a> ($number.format("#*,*",$facet.count))
@@ -30,3 +30,18 @@
     #end
 </div>
 #end
+<script type="text/javascript">
+    $(document).ready(function() {
+        #foreach($field in $response.facetFields)
+            setFacetFieldName('$field.name')
+        #end
+    })
+    function setFacetFieldName(fieldName) {
+        $.get("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22"+fieldName+"%22)", function (data) {
+            var elementId='facet'+fieldName
+            var facetElement=document.getElementById(elementId)
+            facetElement.innerHTML= data
+        })
+
+    }
+</script>
