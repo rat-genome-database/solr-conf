@@ -17,7 +17,7 @@
                 #foreach($facet in $field.values)
                     <li>
                         #if($fieldType && $fieldType == "_id")
-                            <a href="javascript:facetQuery('$field.name', '$facet.name')">$field.name  ###$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$facet.name%22)")
+                            <a href="javascript:facetQuery('$field.name', '$facet.name')" id="facet$facet.name">$field.name  ###$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$facet.name%22)")
                             </a> ($number.format("#*,*",$facet.count))
                         #else
 
@@ -34,6 +34,16 @@
     $(document).ready(function() {
         #foreach($field in $response.facetFields)
             setFacetFieldName('$field.name')
+        #end
+        #foreach($field in $response.facetFields)
+                #set ($fieldType=$field.name.substring($math.sub($field.name.length(),3), $field.name.length()))
+                #foreach($facet in $field.values)
+                    #if($fieldType && $fieldType == "_id")
+                        setFacetFieldName('$facet.name')
+
+                    #end
+
+                #end
         #end
     })
     function setFacetFieldName(fieldName) {

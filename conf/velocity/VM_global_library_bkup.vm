@@ -102,7 +102,7 @@
 
 #macro(display_facet_query $field, $display, $fieldName)
   #if($field.size() > 0)
-  <span class="facet-field">$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$display%22)")</span>
+  <span class="facet-field">$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$display%22)")</span>
     <ul>
     #foreach ($facet in $field)
       #if ($facet.value > 0)
@@ -117,7 +117,7 @@
 #end
 
 #macro(display_facet_range_date $field, $display, $fieldName)
-  <span class="facet-field">$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$display%22)")</span>
+  <span class="facet-field">$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$display%22)")</span>
     ##Note: even if mincount is 1, you can still get a '0' before & after
     ##Note: We assume facet.range.include='lower'
     <ul>
@@ -146,7 +146,7 @@
 
 
 #macro(display_facet_range $field, $display, $fieldName, $start, $end, $gap, $before, $after)
-  <span class="facet-field">$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$display%22)")</span>
+  <span class="facet-field">$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$display%22)")</span>
     <ul>
     #if($before && $before != "")
       #set($value = "[* TO " + $start + "]")
@@ -170,7 +170,7 @@
 #end
 
 #macro(display_facet_range_year $field, $display, $fieldName, $start, $end, $gap, $before, $after)
-  <span class="facet-field">$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$display%22)")</span>
+  <span class="facet-field">$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$display%22)")</span>
     <ul>
     #if($end && $end != "")
       #set($value = "[" + $end + " TO *]")
@@ -199,7 +199,7 @@
 #end
 
 #macro(display_facet_range_year_curation $field, $display, $fieldName, $start, $end, $gap, $before, $after)
-  <span class="facet-field">$import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$display%22)")</span>
+  <span class="facet-field">$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$display%22)")</span>
     <ul>
     #if($end && $end != "")
       #set($value = "[" + $end + " TO *]")
@@ -281,5 +281,5 @@ $v
 
 #macro(addGene $gene) <a href="javascript:searchGene('$pmid', '$gene');"><img src="http://pipelines.rgd.mcw.edu/rgdCuration/icons/zoom.png" width="10" height="10"></a>&nbsp;#end
 
-#macro(getTermFromId $onto_id) $import.read("http://localhost:8080/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$onto_id%22)") #end
+#macro(getTermFromId $onto_id) $import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$onto_id%22)") #end
 #macro(getTermFromId1 $onto_id) $onto_id #end
