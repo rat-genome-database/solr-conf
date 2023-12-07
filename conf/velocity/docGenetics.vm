@@ -10,7 +10,7 @@
 #end
 &nbsp;
 &nbsp;
-<a href="http://pipelines.rgd.mcw.edu/rgdweb/pubmed/getReference.html?pmid=$doc.getFieldValue('pmid')&type=redirect" target="_blank"><img src="http://pipelines.rgd.mcw.edu/rgdweb/pubmed/rgdLogo.png?pmid=$doc.getFieldValue('pmid')" alt="" width="90" height="30"></a>
+<a href="http://dev.rgd.mcw.edu/rgdweb/pubmed/getReference.html?pmid=$doc.getFieldValue('pmid')&type=redirect" target="_blank"><img src="http://dev.rgd.mcw.edu/rgdweb/pubmed/rgdLogo.png?pmid=$doc.getFieldValue('pmid')" alt="" width="90" height="30"></a>
 <span id="annP$doc.getFieldValue('pmid')" style="float: right;">P </span>
 <span id="annF$doc.getFieldValue('pmid')" style="float: right;">F </span>
 <span id="annD$doc.getFieldValue('pmid')" style="float:right;">D </span>&nbsp;&nbsp;

@@ -7,11 +7,11 @@
 #set($userId = $params.get("userId"))
 #set($userFullName = $params.get("userFullName"))
 #set($curHost = $params.get("curHost"))
-#set($curServer = $curHost.toLowerCase().contains("pipelines"))
+#set($curServer = $curHost.toLowerCase().contains("dev"))
 #if ($curServer)
-#set($curLogServer = "https://ontomate.rgd.mcw.edu")
+#set($curLogServer = "https://dev.rgd.mcw.edu")
 #else
-#set($curLogServer = "https://ontomate.rgd.mcw.edu")
+#set($curLogServer = "https://dev.rgd.mcw.edu")
 #end
 #set($resultCountStr = $number.format("#*,*", $page.results_found))
 #set($pageStr = $number.format("#*,*", $page.current_page_number))

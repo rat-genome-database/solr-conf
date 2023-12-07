@@ -8,7 +8,7 @@
 ###########set( $curatable = $import.read("http://localhost:8080/QueryBuilder/getCuratable/?PmId=$pmid"))
 #############end
 
-<div class="result-citation">$hitCount. <a href="javascript:openParent('$pmid');"><img src="https://pipelines.rgd.mcw.edu/rgdCuration/icons/basket_add.png"></a>&nbsp;&nbsp;&nbsp;PMID: 
+<div class="result-citation">$hitCount. <a href="javascript:openParent('$pmid');"><img src="https://dev.rgd.mcw.edu/rgdCuration/icons/basket_add.png"></a>&nbsp;&nbsp;&nbsp;PMID:
 #set($pub_type=$doc.getFieldValue('p_type'))
 #set($is_review=false)
 #if ($pub_type && $pub_type.size()>0)

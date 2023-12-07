@@ -114,7 +114,7 @@ function setAnn(pmid, aspect, data) {
     //return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 //}
 function getAnn(pmid, aspect) {
-  $.ajax({url:"https://pipelines.rgd.mcw.edu/rgdweb/webservice/refAnnots.html?pmid="+pmid+"&aspect="+aspect+"&jsonp="+aspect+"_"+pmid, dataType: 'jsonp'});
+  $.ajax({url:"https://dev.rgd.mcw.edu/rgdweb/webservice/refAnnots.html?pmid="+pmid+"&aspect="+aspect+"&jsonp="+aspect+"_"+pmid, dataType: 'jsonp'});
 }
 
 function getParameterByName(name) {

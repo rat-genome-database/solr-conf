@@ -289,9 +289,9 @@ $v
 #end
 #end  
 
-#macro(addTerm $onto_id) <a href="javascript:addTermToParent('$pmid', '$onto_id');"><img src="https://pipelines.rgd.mcw.edu/rgdCuration/icons/basket_add.png" width="10" height="10"></a>&nbsp;#end
+#macro(addTerm $onto_id) <a href="javascript:addTermToParent('$pmid', '$onto_id');"><img src="https://dev.rgd.mcw.edu/rgdCuration/icons/basket_add.png" width="10" height="10"></a>&nbsp;#end
 
-#macro(addGene $gene) <a href="javascript:searchGene('$pmid', '$gene');"><img src="https://pipelines.rgd.mcw.edu/rgdCuration/icons/zoom.png" width="10" height="10"></a>&nbsp;#end
+#macro(addGene $gene) <a href="javascript:searchGene('$pmid', '$gene');"><img src="https://dev.rgd.mcw.edu/rgdCuration/icons/zoom.png" width="10" height="10"></a>&nbsp;#end
 
 #macro(getTermFromId $onto_id)
   #set($facetField ="javascript:facetField($onto_id)" )
