@@ -21,25 +21,26 @@ Query condition: <span style="color:brown;">$request.params.get('message_label')
     <div class="result-terms" #annTitle("Lists out the &fq filters.  Click to remove.")>
           #if ($params.getParams('fq'))
           Filters: <a href="javascript:facetQueryPath(0)">All</a>
+              <span id="filters"></span>
           #end
-          #foreach($fq in $params.getParams('fq'))
-             #set($previous_fq_count=$foreach.count - 0)
-                #if($fq != '')
-	             #set ($fieldName=$fq.substring(0, $fq.indexOf(':')))
-                     #set ($fieldType=$fieldName.substring($math.sub($fieldName.length(),3), $fieldName.length()))
-                     #set ($fieldValue=$fq.substring($math.add($fq.indexOf(':'),2), $math.sub($fq.length(),1)))
-
-                     #if($fieldType && $fieldType == "_id" && $fieldValue != '*')
-                         #set($fieldValue=$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
-                     #end
-                     #set($fq=$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+": "+$fieldValue)
-                    ###set($fq=$import.read("https://dev.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+":"+$import.read("https://dev.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
-                 #if ($foreach.count < $params.getParams('fq').size())
-                     &gt; <a href="javascript:facetQueryPath($previous_fq_count)">$fq</a>
-                  #else
-                      &gt; $fq
-                 #end
-               #end
+##          #foreach($fq in $params.getParams('fq'))
+##             #set($previous_fq_count=$foreach.count - 0)
+##                #if($fq != '')
+##	             #set ($fieldName=$fq.substring(0, $fq.indexOf(':')))
+##                     #set ($fieldType=$fieldName.substring($math.sub($fieldName.length(),3), $fieldName.length()))
+##                     #set ($fieldValue=$fq.substring($math.add($fq.indexOf(':'),2), $math.sub($fq.length(),1)))
+##
+##                     #if($fieldType && $fieldType == "_id" && $fieldValue != '*')
+##                         #set($fieldValue=$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
+##                     #end
+##                     #set($fq=$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+": "+$fieldValue)
+##                    ###set($fq=$import.read("https://dev.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+":"+$import.read("https://dev.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
+##                 #if ($foreach.count < $params.getParams('fq').size())
+##                     &gt; <a href="javascript:facetQueryPath($previous_fq_count)">$fq</a>
+##                  #else
+##                      &gt; $fq
+##                 #end
+##               #end
                                                                                                                                                                                                       #end
    </div>
 #if($response.response.spellcheck.suggestions and $response.response.spellcheck.suggestions.size() > 0)
@@ -54,6 +55,48 @@ $(function() {
   }
 });
   });
+$(document).ready(function () {
+    var spanElement=document.getElementById("filters")
+    var innerHTML='';
+    if(spanElement!=null){
+        innerHTML+=spanElement.innerHTML
+    }
+
+    #foreach($fq in $params.getParams('fq'))
+        #set($previous_fq_count=$foreach.count - 0)
+        #if($fq != '')
+
+            #set ($fieldName=$fq.substring(0, $fq.indexOf(':')))
+            #set ($fieldType=$fieldName.substring($math.sub($fieldName.length(),3), $fieldName.length()))
+            #set ($fieldValue=$fq.substring($math.add($fq.indexOf(':'),2), $math.sub($fq.length(),1)))
+
+
+
+            var fieldTypeIdVal='';
+            if('$fieldType'=='_id'){
+                $.get("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)", function (data) {
+                    fieldTypeIdVal+=data
+                })
+            }
+            $.get("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)", function (data) {
+                #if ($previous_fq_count < $params.getParams('fq').size())
+                    if('$fieldType'=='_id') {
+                        innerHTML += "><a href='javascript:facetQueryPath($previous_fq_count)'>" + data + ":" + fieldTypeIdVal + "</a>"
+
+                    }else{
+                        innerHTML += "><a href='javascript:facetQueryPath($previous_fq_count)'>" + data + ":" + '$fieldValue' + "</a>"
+
+                    }
+                #else
+                    innerHTML+=">"+data+":"+'$fieldValue'
+                #end
+                spanElement.innerHTML=innerHTML;
+
+            })
+
+        #end
+    #end
+})
 
 function openPubmed(pmid, url) {
   var win=window.open(url, "extText");
