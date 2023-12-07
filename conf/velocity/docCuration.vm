@@ -34,7 +34,7 @@ $pmid &nbsp;&nbsp;
 &nbsp;&nbsp; <a href="javascript:void(0)" onclick="openPubmed($pmid,'$nih_url');" class="ext_url">NCBI page</a>  
 #if ($doc.getFieldValue('pmc_id_s'))
    #set ($pmcUrl="http://www.ncbi.nlm.nih.gov/pmc/articles/"+$doc.getFieldValue('pmc_id_s')+"/")
-   <b> <a href="javascript:void(0)" onclick="openFullText($pmid, '$pmcUrl');" class="ext_url"">Free PMC Article</a></b>
+   <b> <a href="javascript:void(0)" onclick="openFullText($pmid, '$pmcUrl');" class="ext_url">Free PMC Article</a></b>
 #elseif ($doc.getFieldValue('doi_s'))
    #set ($doiUrl="http://dx.doi.org/"+$doc.getFieldValue('doi_s'))
    <b> <a href="javascript:void(0)" onclick="openFullText($pmid,'$doiUrl');" class="ext_url">Full Text Article via DOI</a></b>
