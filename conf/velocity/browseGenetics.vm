@@ -36,7 +36,7 @@ function toggleMessage() {
 Filters: <a href="javascript:facetQueryPath(0)">All</a>     
       #end
       #foreach($fq in $params.getParams('fq'))
-        #set($previous_fq_count=$velocityCount - 0)
+        #set($previous_fq_count=$foreach.count - 0)
         #if($fq != '')
 
           #set ($fieldName=$fq.substring(0, $fq.indexOf(':')))

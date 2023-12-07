@@ -34,7 +34,7 @@
 Filters: 
       #end
       #foreach($fq in $params.getParams('fq'))
-        #set($previous_fq_count=$velocityCount - 1)
+        #set($previous_fq_count=$foreach.count - 1)
         #if($fq != '')
 
           #set ($fieldName=$fq.substring(0, $fq.indexOf(':')))
