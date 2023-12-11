@@ -103,7 +103,7 @@
 #macro(display_facet_query $field, $display, $fieldName)
   #if($field.size() > 0)
     #set($facetField ="javascript:facetField('$display')" )
-  <span class="facet-field">$facetField</span>
+  <span class="facet-field">Year</span>
     <ul>
     #foreach ($facet in $field)
       #if ($facet.value > 0)
