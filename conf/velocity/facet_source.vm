@@ -1,6 +1,6 @@
 
-<span id="source">Source</span>
+<span class="facet-field source" id="source">Source</span>
 <ul>
-    <li><a href="pubmed">Pubmed Abstracts</a>
-    <li><a href="pmc">PMC Full Papers</a>
+    <li><a href="">Pubmed Abstracts</a>
+    <li><a href="">PMC Full Papers</a>
 </ul>
