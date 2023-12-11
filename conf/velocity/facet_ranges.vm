@@ -30,7 +30,7 @@
 ##display_facet_range_date($field, "Manufacture Date", "manufacturedate_dt")
 ##set($field = $response.response.facet_counts.facet_ranges.p_date)
 ##display_facet_range_date($field, "Publication Year", "p_date")
-
+<h1>FACET RANGES: $response.response.facet_counts.facet_ranges</h1>
 #foreach ($field in $response.response.facet_counts.facet_ranges)
         #set($name = $field.key)
         #set($display = "$name")
@@ -40,6 +40,7 @@
         #set($gap = $field.value.gap)
         #set($before = $field.value.before)
         #set($after = $field.value.after)
+        <h1>Hellooooooooo....$f $display $name, $start, $end, $gap, $before, $after</h1>
         #display_facet_range_year_curation($f, $display, $name, $start, $end, $gap, $before, $after)
 #end
 
