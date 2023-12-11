@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://rgd.mcw.edu/rgdweb/css/webFeedback.css" type="text/css"/>
 
     <!-- adding link for OntoSolr (Pushkala) -->
-    <link rel="stylesheet" href="https://rgd.mcw.edu/OntoSolr/files/jquery.autocomplete.css" type="text/css" />
+    <link rel="stylesheet" href="https://dev.rgd.mcw.edu/solr/OntoSolr/files/jquery.autocomplete.css" type="text/css" />
 
 
     <script type="text/javascript" src="https://rgd.mcw.edu/rgdweb/common/modalDialog/common.js"></script>

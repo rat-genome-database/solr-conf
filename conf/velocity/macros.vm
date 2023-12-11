@@ -176,9 +176,9 @@
 #end
 
 #macro(display_facet_range_year $field, $display, $fieldName, $start, $end, $gap, $before, $after)
-  #set($facetField ="javascript:facetField($display)" )
+  #set($facetRangeField ="javascript:facetField($display)" )
 
-<span class="facet-field $display">$facetField##$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$display%22)")
+<span class="facet-field $display">$facetRangeField##$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$display%22)")
 </span>
     <ul>
     #if($end && $end != "")
@@ -302,6 +302,7 @@ $v
 
 <script>
   function facetField(display) {
+    console.log("FACET FIELD:"+ display)
     var innerHTML=''
     $.get("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22"+display+"%22)", function (data) {
       innerHTML=data;

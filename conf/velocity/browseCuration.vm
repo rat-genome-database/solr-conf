@@ -215,7 +215,7 @@ function addTermToParent(pmid, ontoTerm) {
 
 function searchGene(pmid, gene) {
   host = getParameterByName('curHost');
-  $.ajax({url:'https://ontomate.rgd.mcw.edu/OntoSolr/collection1/select?wt=csv&fq=cat:(%22RGD_GENE%22)&fl=term&csv.header=false&&rows=1&q='+gene}).done(function(data){
+  $.ajax({url:'https://dev.rgd.mcw.edu/solr/OntoSolr/select?wt=csv&fq=cat:(%22RGD_GENE%22)&fl=term&csv.header=false&&rows=1&q='+gene}).done(function(data){
 
   window.opener.location.href="http://" + host + "/rgdCuration/?matchType=equals&objectType=14&submitBtn=Search+for+Object&hiddenXYZ123=&module=curation&func=searchObjects&objectName=" + data;
   window.opener.focus();
