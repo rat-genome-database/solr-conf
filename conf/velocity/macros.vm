@@ -103,7 +103,7 @@
 #macro(display_facet_query $field, $display, $fieldName)
   #if($field.size() > 0)
     #set($facetField ="javascript:facetField('$display')" )
-  <span class="facet-field">Year</span>
+  <span class="facet-field">$facetField</span>
     <ul>
     #foreach ($facet in $field)
       #if ($facet.value > 0)
@@ -210,7 +210,7 @@
 #macro(display_facet_range_year_curation $field, $display, $fieldName, $start, $end, $gap, $before, $after)
   #set($facetField ="javascript:facetField('$display')" )
 
-<span class="facet-field $display">$facetField##$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$display%22)")
+<span class="facet-field $display">Year##$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$display%22)")
   </span>
     <ul>
     #if($end && $end != "")
