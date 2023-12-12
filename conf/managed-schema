@@ -148,6 +148,8 @@
    <field name="affiliation" type="text" indexed="true" stored="true" multiValued="true"/>
    <field name="affiliation_s" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="p_type" type="string" indexed="true" stored="true" multiValued="true"/>
+      <field name="p_source" type="string" indexed="true" stored="true" multiValued="true"/>
+
    <field name="issn" type="string" indexed="true" stored="true" multiValued="false"/>
 
 <field name="p_date_pmc" type="date" indexed="true" stored="true" multiValued="false"/>
