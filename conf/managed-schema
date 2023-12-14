@@ -284,16 +284,23 @@
 
    <copyField source="gene" dest="gene_s"/>
    <copyField source="organism_term" dest="organism_term_s"/>
-
+ <copyField source="gene_pmc" dest="gene"/>
    <copyField source="gene_pmc" dest="gene_s"/>
+
+         <copyField source="organism_term_pmc" dest="organism_term"/>
       <copyField source="organism_term_pmc" dest="organism_term_s"/>
    <copyField source="affiliation" dest="affiliation_s"/>
    <copyField source="mt_term" dest="mt_term_s"/>
+    <copyField source="mt_term_pmc" dest="mt_term"/>
  <copyField source="mt_term_pmc" dest="mt_term_s"/>
 
    <copyField source="bp_id" dest="go_id"/>
    <copyField source="bp_term" dest="go_term"/>
    <copyField source="bp_count" dest="go_count"/>
+
+   <copyField source="bp_id_pmc" dest="bp_id"/>
+      <copyField source="bp_term_pmc" dest="bp_term"/>
+      <copyField source="bp_count_pmc" dest="bp_count"/>
 <copyField source="bp_id_pmc" dest="go_id"/>
    <copyField source="bp_term_pmc" dest="go_term"/>
    <copyField source="bp_count_pmc" dest="go_count"/>
@@ -301,6 +308,9 @@
    <copyField source="mf_id" dest="go_id"/>
    <copyField source="mf_term" dest="go_term"/>
    <copyField source="mf_count" dest="go_count"/>
+   <copyField source="mf_id_pmc" dest="mf_id"/>
+      <copyField source="mf_term_pmc" dest="mf_term"/>
+      <copyField source="mf_count_pmc" dest="mf_count"/>
 <copyField source="mf_id_pmc" dest="go_id"/>
    <copyField source="mf_term_pmc" dest="go_term"/>
    <copyField source="mf_count_pmc" dest="go_count"/>
@@ -308,10 +318,16 @@
     <copyField source="cc_id" dest="go_id"/>
       <copyField source="cc_term" dest="go_term"/>
       <copyField source="cc_count" dest="go_count"/>
-
+<copyField source="cc_id_pmc" dest="cc_id"/>
+   <copyField source="cc_term_pmc" dest="cc_term"/>
+   <copyField source="cc_count_pmc" dest="cc_count"/>
    <copyField source="cc_id_pmc" dest="go_id"/>
    <copyField source="cc_term_pmc" dest="go_term"/>
    <copyField source="cc_count_pmc" dest="go_count"/>
+
+ <copyField source="rdo_id_pmc" dest="rdo_id"/>
+   <copyField source="rdo_term_pmc" dest="rdo_term"/>
+   <copyField source="rdo_count_pmc" dest="rdo_count"/>
 
 <uniqueKey>pmid</uniqueKey>
 
