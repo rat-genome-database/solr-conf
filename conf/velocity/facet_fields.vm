@@ -3,8 +3,13 @@
 <div id="facet_tabs">
     <ul>
         #foreach($field in $response.facetFields)
-            <li style="font-size:10"><font size="1"><a href="#$field.name" id="facet$field.name">$field.name  ###$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$field.name%22)")
+            #if($field.name!='p_source')
+                <li style="font-size:10px"><font size="1"><a href="#$field.name" id="facet$field.name">$field.name  ###$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$field.name%22)")
             </a></font></li>
+                #else
+                    <li style="font-size:10px"><font size="1"><a href="#$field.name">Source  ###$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$field.name%22)")
+                    </a></font></li>
+            #end
         #end
     </ul>
     #foreach($field in $response.facetFields)
