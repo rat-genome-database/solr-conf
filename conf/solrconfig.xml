@@ -781,7 +781,6 @@
 
       <str name="facet">on</str>
       <str name="facet.field">p_source</str>
-      <str name="facet.mincount">1</str>
       <!-- Faceting defaults -->
       <str name="facet">on</str>
       <str name="facet.range">p_year</str>
