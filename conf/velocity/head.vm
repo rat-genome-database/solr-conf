@@ -34,9 +34,9 @@
 
   <link rel="stylesheet" type="text/css" href="/solr/OntoMate/files/main.css"/-->
 
-<script type="text/javascript" src="/QueryBuilder/js/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="/QueryBuilder/js/jquery-ui-1.12.1/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/QueryBuilder/js/jquery-ui-1.12.1/jquery-ui.css" />
+<script type="text/javascript" src="/QueryBuilder/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="/QueryBuilder/js/jquery-ui-1.13.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/QueryBuilder/js/jquery-ui-1.13.3/jquery-ui.css" />
   <script type="text/javascript" src="/QueryBuilder/js/jquery.highlight-3.js"></script>
 
   <link rel="stylesheet" type="text/css" href="/QueryBuilder/js/main.css"/>
