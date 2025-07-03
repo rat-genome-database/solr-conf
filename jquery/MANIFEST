@@ -213,7 +213,7 @@ external/jquery.mousewheel.js 99457f3dc7082452b9fdc702b3dfcbaf
 external/jshint.js e25340f0196f65135f50877c0fe6efe2
 external/qunit.css 37687050b4af752017145c24bfd9c2f4
 external/qunit.js c88d05352e715c460e26f5db688c1d13
-jquery-1.9.1.js 08c235d357750c657ac1db7d1cf656a9
+jquery-3.7.1.min.js 08c235d357750c657ac1db7d1cf656a9
 package.json 8ee347cd5bd8331c710b6dccb45fc7a6
 tests/index.css 1975db2466c0425aa5bde34b58490513
 tests/index.html d117582e9393b1bdf056d78c536d2d96
@@ -231,7 +231,7 @@ tests/jquery-1.8.1.js 3fb547ed8dc2b18ab3ea88e4b8868f19
 tests/jquery-1.8.2.js ef68beaa375acd83206bbc0cf92970e9
 tests/jquery-1.8.3.js 2073df88a429ccbe5dca5e2c40e742b4
 tests/jquery-1.9.0.js f3346149a7173e70d39e6f36bfb178a4
-tests/jquery-1.9.1.js 08c235d357750c657ac1db7d1cf656a9
+tests/jquery-3.7.1.min.js 08c235d357750c657ac1db7d1cf656a9
 tests/jquery.js fb6f96f1c5db020866e96f1350c6fd64
 tests/jquery.simulate.js 77a796da2b4544b1afc97a196e4ebcd4
 tests/unit/accordion/accordion.html 56973698b4d67cd4f87976b99a995360
