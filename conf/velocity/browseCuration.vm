@@ -7,11 +7,11 @@
 #set($userId = $params.get("userId"))
 #set($userFullName = $params.get("userFullName"))
 #set($curHost = $params.get("curHost"))
-#set($curServer = $curHost.toLowerCase().contains("pipelines"))
+#set($curServer = $curHost.toLowerCase().contains("dev"))
 #if ($curServer)
-#set($curLogServer = "ontomate.rgd.mcw.edu")
+#set($curLogServer = "https://dev.rgd.mcw.edu")
 #else
-#set($curLogServer = "ontomate.rgd.mcw.edu")
+#set($curLogServer = "https://dev.rgd.mcw.edu")
 #end
 #set($resultCountStr = $number.format("#*,*", $page.results_found))
 #set($pageStr = $number.format("#*,*", $page.current_page_number))
@@ -194,29 +194,10 @@ function resubmitQuery() {
   $("form#queryForm").submit();
 }
 
-function filterYear() {
-  var yearStart=$("#yearCondStart").val();
-  var yearEnd=$("#yearCondEnd").val();
-  if (yearStart == null || yearStart.length == 0) yearStart = "*";
-  if (yearEnd == null || yearEnd.length == 0) yearEnd = "*";
-  facetQueryNum('p_year', '['+yearStart+" TO "+yearEnd+"]");
-}
-
-function facetQueryNum(field, value) {
-  newValue = field + ':' + value;
-  $("#fqEnd").before('<input id="fq" type="hidden" name="fq" value=\'' + newValue + '\'/>');
-  resubmitQuery();
-}
+#parse("facet_js.vm")
 
 function startPage(recordNumber) {
   $("#start").val(recordNumber);
-  $("form#queryForm").submit();
-}
-
-function facetQueryPath(index) {
-$('input[id^=fq]').each(function(i) {
-   if (i >= index) $(this).attr("disabled", "disabled");
-});
   $("form#queryForm").submit();
 }
 
