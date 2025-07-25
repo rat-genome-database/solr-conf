@@ -21,11 +21,11 @@ Filters: <a href="javascript:facetQueryPath(0)">All</a>
           #set ($fieldValue=$fq.substring($math.add($fq.indexOf(':'),2), $math.sub($fq.length(),1)))
 
           #if($fieldType && $fieldType == "_id" && $fieldValue != '*')
-              #set($fieldValue=$import.read("https://ontomate.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
+              #set($fieldValue=$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
             
           #end
-              #set($fq=$import.read("https://ontomate.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+": "+$fieldValue)
-              ###set($fq=$import.read("https://ontomate.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+":"+$import.read("https://ontoamte.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
+              #set($fq=$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+": "+$fieldValue)
+              ###set($fq=$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+":"+$import.read("https://ontoamte.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
         &gt; <a href="javascript:facetQueryPath($previous_fq_count)">$fq</a>
         #end
       #end
@@ -170,7 +170,7 @@ function gotoStart() {
 
 </script>
 
-<form id="queryForm" action="/solr/browse" method="post">
+<form id="queryForm" action="/solr/OntoMate/browse" method="post">
  <input type="hidden" name="q" value = '$request.params.get("q")'/>
  <input id="start" type="hidden" name="start" value = '$request.params.get("start")'/>
  <input type="hidden" name="sort" value = "$request.params.get('sort')"/>

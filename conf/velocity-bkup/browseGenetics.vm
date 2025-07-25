@@ -6,7 +6,7 @@
 #set($resultCountStr = $number.format("#*,*", $page.results_found))
 #set($pageStr = $number.format("#*,*", $page.current_page_number))
 #set($pageCountStr = $number.format("#*,*", $page.page_count))
-#set($curLogServer = "https://ontomate.rgd.mcw.edu")
+#set($curLogServer = "https://dev.rgd.mcw.edu")
 Query condition: 
 #set($messageLabel=$request.params.get('message_label'))
 #if ($messageLabel.length()>100) 
