@@ -40,6 +40,10 @@
         #set($gap = $field.value.gap)
         #set($before = $field.value.before)
         #set($after = $field.value.after)
-        #display_facet_range_year($f, $display, $name, $start, $end, $gap, $before, $after)
+        #display_facet_range_year_curation($f, $display, $name, $start, $end, $gap, $before, $after)
+<span>
+<input id="yearCondStart" type="text" size="4" style="font-size:10px"/> to <input id="yearCondEnd" type="text" size="4" style="font-size:10px"/><input id="bnFilter" type="button" onclick="filterYear();" value="Filter"  style="font-size:10px"/>
+<br style="margin-bottom:15px;"/>
+</span>
 #end
 
