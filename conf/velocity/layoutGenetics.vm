@@ -1,9 +1,11 @@
-#parse("headerarea.vm")
-
-
-  #parse("head.vm")
-  <div id="header">
-      #parse("header.vm")
+<!doctype html>
+<html>
+<head>
+  #parse("headGenetics.vm")
+</head>
+  <body>
+    <div id="header">
+      #parse("headerGenetics.vm")
     </div>
     <div id="tabs">
       #parse("tabs.vm")
@@ -14,5 +16,5 @@
     <div id="footer">
       #parse("footer.vm")
     </div>
- #parse("footerarea.vm")
-
+  </body>
+</html>

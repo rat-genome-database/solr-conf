@@ -27,11 +27,11 @@ Did you mean <a href="#url_for_home?q=$esc.url($response.response.spellcheck.sug
         });
     });
     $(document).ready(function () {
-        var spanElement=document.getElementById("filters")
+    var spanElement=document.getElementById("filters")
         var innerHTML='';
-        if(spanElement!=null){
-            innerHTML+=spanElement.innerHTML
-        }
+    if(spanElement!=null){
+        innerHTML+=spanElement.innerHTML
+    }
 
         #foreach($fq in $params.getParams('fq'))
             #set($previous_fq_count=$foreach.count - 0)
@@ -46,18 +46,18 @@ Did you mean <a href="#url_for_home?q=$esc.url($response.response.spellcheck.sug
                 var fieldTypeIdVal='';
                 if('$fieldType'=='_id'){
                     $.get("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)", function (data) {
-                        fieldTypeIdVal+=data
+                       fieldTypeIdVal+=data
                     })
                 }
                 $.get("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)", function (data) {
                     #if ($previous_fq_count < $params.getParams('fq').size())
-                        if('$fieldType'=='_id') {
-                            innerHTML += "><a href='javascript:facetQueryPath($previous_fq_count)'>" + data + ":" + fieldTypeIdVal + "</a>"
+                    if('$fieldType'=='_id') {
+                        innerHTML += "><a href='javascript:facetQueryPath($previous_fq_count)'>" + data + ":" + fieldTypeIdVal + "</a>"
 
-                        }else{
-                            innerHTML += "><a href='javascript:facetQueryPath($previous_fq_count)'>" + data + ":" + '$fieldValue' + "</a>"
+                    }else{
+                        innerHTML += "><a href='javascript:facetQueryPath($previous_fq_count)'>" + data + ":" + '$fieldValue' + "</a>"
 
-                        }
+                    }
                     #else
                         innerHTML+=">"+data+":"+'$fieldValue'
                     #end

@@ -35,7 +35,7 @@
     #end
     <div class="constraints" #annTitle("Lists out the &fq filters.  Click to remove.")>
       #foreach($fq in $params.getParams('fq'))
-        #set($previous_fq_count=$velocityCount - 1)
+        #set($previous_fq_count=$foreach.count - 1)
         #if($fq != '')
         &gt; <a style="{text-decoration: line-through;}" href="#url_for_filters($request.params.getParams('fq').subList(0,$previous_fq_count))">$fq</a>
         #end

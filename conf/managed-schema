@@ -197,8 +197,8 @@
    <field name="rs_term_pmc" type="text" indexed="true" stored="true" multiValued="true"/>
       <field name="rs_id_pmc" type="string" indexed="true" stored="true" multiValued="true"/>
 
-   <field name="gene" type="gene_text" indexed="true" stored="true" multiValued="true" omitNorms="true"/>
-   <field name="gene_s" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="gene" type="gene_text" indexed="true" stored="true" multiValued="true" required="false" termVectors="true" termPositions="true" termOffsets="true"/>
+   <field name="gene_s" type="string" indexed="true" stored="true" multiValued="true" required="false" termVectors="true" termPositions="true" termOffsets="true"/>
    <field name="gene_pmc" type="gene_text" indexed="true" stored="true" multiValued="true" omitNorms="true"/>
    <field name="gene_s_pmc" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="rgd_obj_term" type="string" indexed="true" stored="true" multiValued="true"/>

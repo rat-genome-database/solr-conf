@@ -240,6 +240,26 @@
 #end
 
 
+##   <lst name="facet_pivot">
+##     <arr name="cat,inStock">
+##       <lst>
+##         <str name="field">cat</str>
+##         <str name="value">electronics</str>
+##         <int name="count">17</int>
+##         <arr name="pivot">
+##           <lst>
+##             <str name="field">inStock</str>
+##             <str name="value">true</str>
+##             <int name="count">13</int>
+##           </lst>
+##           <lst>
+##           <str name="field">inStock</str>
+##             <str name="value">false</str>
+##             <int name="count">4</int>
+##           </lst>
+##         </arr>
+##       </lst>
+
 ## $pivots is a list of facet_pivot
 #macro(display_facet_pivot $pivots, $display)
   #if($pivots.size() > 0)
@@ -283,7 +303,7 @@ $v
 <script>
   function facetField(display) {
     console.log("FACET FIELD:"+ display)
-    var innerHTML;
+    var innerHTML=''
     $.get("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22"+display+"%22)", function (data) {
       innerHTML=data;
     })

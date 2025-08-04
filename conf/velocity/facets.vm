@@ -1,3 +1,4 @@
+#parse('facet_source.vm')
 #parse('facet_ranges.vm')
 #parse('facet_fields.vm')  
 ##parse('facet_queries.vm')
