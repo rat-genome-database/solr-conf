@@ -2,7 +2,7 @@
 
 <config>
 
-  <luceneMatchVersion>8.11</luceneMatchVersion>
+  <luceneMatchVersion>8.11.2</luceneMatchVersion>
 
 <lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-dataimporthandler-.*\.jar" />
 
@@ -560,5 +560,4 @@
   <admin>
     <defaultQuery>*:*</defaultQuery>
   </admin>
-
 </config>
