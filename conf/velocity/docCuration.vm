@@ -142,7 +142,7 @@ $authors
  </div>
 
 <div class="result-citation">#field('citation')</div>
-<span style="font-weight:bold;color:orange;">ABSTRACT</span><div id="abstext_$pmid" class="abs_body">$abstract_text.replaceAll('\n', '')</div>
+<span style="font-weight:bold;color:orange;">ABSTRACT</span><div id="abstext_$pmid" class="abs_body">$!{abstract_text}</div>
 #if ($doc.getFieldValue('mesh_terms'))
 <font size=2>MeSH Terms: </font>#field('mesh_terms')
 #end
