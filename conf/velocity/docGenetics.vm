@@ -10,7 +10,7 @@
 #end
 &nbsp;
 &nbsp;
-<a href="http://dev.rgd.mcw.edu/rgdweb/pubmed/getReference.html?pmid=$doc.getFieldValue('pmid')&type=redirect" target="_blank"><img src="http://dev.rgd.mcw.edu/rgdweb/pubmed/rgdLogo.png?pmid=$doc.getFieldValue('pmid')" alt="" width="90" height="30"></a>
+<a href="http://pipelines.rgd.mcw.edu/rgdweb/pubmed/getReference.html?pmid=$doc.getFieldValue('pmid')&type=redirect" target="_blank"><img src="http://pipelines.rgd.mcw.edu/rgdweb/pubmed/rgdLogo.png?pmid=$doc.getFieldValue('pmid')" alt="" width="90" height="30"></a>
 <span id="annP$doc.getFieldValue('pmid')" style="float: right;">P </span>
 <span id="annF$doc.getFieldValue('pmid')" style="float: right;">F </span>
 <span id="annD$doc.getFieldValue('pmid')" style="float:right;">D </span>&nbsp;&nbsp;
@@ -66,14 +66,14 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($value_length = $rdo_id_values.size() - 1)
 #foreach ($i in [0..$value_length])
 #set ($id_value=$rdo_id_values.get($i))
-#set ($term_value=$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$id_value%22)"))
+#set ($term_value=$import.read("/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$id_value%22)"))
 #foreach ($hl_rdo in $response.response.highlighting.get($docId).get('rdo_id'))
 #if ($hl_rdo.contains($id_value))
 #set( $term_value = "<b style='background:yellow'>$term_value</b>")
 #end
 #end
 #set ($count_value=$rdo_count_values.get($i))
-<a href="http://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')">$term_value</a>&nbsp;&nbsp;
+<a href="http://pipelines.rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end

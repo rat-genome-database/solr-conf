@@ -9,9 +9,9 @@
 #set($curHost = $params.get("curHost"))
 #set($curServer = $curHost.toLowerCase().contains("dev"))
 #if ($curServer)
-#set($curLogServer = "https://dev.rgd.mcw.edu")
+#set($curLogServer = "https://ontomate.rgd.mcw.edu")
 #else
-#set($curLogServer = "https://dev.rgd.mcw.edu")
+#set($curLogServer = "https://ontomate.rgd.mcw.edu")
 #end
 #set($resultCountStr = $number.format("#*,*", $page.results_found))
 #set($pageStr = $number.format("#*,*", $page.current_page_number))
@@ -75,11 +75,11 @@ $(document).ready(function () {
 
             var fieldTypeIdVal='';
             if('$fieldType'=='_id'){
-                $.get("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)", function (data) {
+                $.get("/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)", function (data) {
                     fieldTypeIdVal+=data
                 })
             }
-            $.get("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)", function (data) {
+            $.get("/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)", function (data) {
                 #if ($previous_fq_count < $params.getParams('fq').size())
                     if('$fieldType'=='_id') {
                         innerHTML += "><a href='javascript:facetQueryPath($previous_fq_count)'>" + data + ":" + fieldTypeIdVal + "</a>"
@@ -215,7 +215,7 @@ function addTermToParent(pmid, ontoTerm) {
 
 function searchGene(pmid, gene) {
   host = getParameterByName('curHost');
-  $.ajax({url:'https://dev.rgd.mcw.edu/solr/OntoSolr/select?wt=csv&fq=cat:(%22RGD_GENE%22)&fl=term&csv.header=false&&rows=1&q='+gene}).done(function(data){
+  $.ajax({url:'/solr/OntoSolr/select?wt=csv&fq=cat:(%22RGD_GENE%22)&fl=term&csv.header=false&&rows=1&q='+gene}).done(function(data){
 
   window.opener.location.href="http://" + host + "/rgdCuration/?matchType=equals&objectType=14&submitBtn=Search+for+Object&hiddenXYZ123=&module=curation&func=searchObjects&objectName=" + data;
   window.opener.focus();
