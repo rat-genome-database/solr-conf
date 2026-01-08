@@ -177,28 +177,47 @@ function resubmitQuery() {
 }
 </script>
 
-<form id="queryForm" action="/solr/browse" method="post">
- <input type="hidden" name="q" value = '$request.params.get("q")'/>
- <input id="start" type="hidden" name="start" value = '$request.params.get("start")'/>
- <input id="sortCond" type="hidden" name="sort" value = "$request.params.get('sort')"/>
- <input type="hidden" name="qf" value="$request.params.get('qf')"/>
- <input type="hidden" name="mm" value="$request.params.get('mm')"/>
- <input type="hidden" name="curHost" value="$request.params.get('curHost')"/>
- <input type="hidden" name="message_label" value="$request.params.get('message_label')"/>
-#foreach($fq in $request.params.getParams('fq'))
- #if ($fq != "")
- <input id="fq" type="hidden" name="fq" value='$fq'/>
- #end
-#end
+<form id="queryForm" action="/solr/OntoMate/browse" method="post">
 
-#foreach($facet_field in $request.params.getParams('facet.field'))
- #if ($fq != "")
- <input id="facet_field" type="hidden" name="facet.field" value='$facet_field'/>
- #end
-#end
+    <input type="hidden" name="q"
+           value="$esc.html($request.params.get('q'))"/>
 
- <input id="fqEnd" type="hidden"/>
+    <input id="start" type="hidden" name="start"
+           value="$esc.html($request.params.get('start'))"/>
+
+    <input id="sortCond" type="hidden" name="sort"
+           value="$esc.html($request.params.get('sort'))"/>
+
+    <input type="hidden" name="qf"
+           value="$esc.html($request.params.get('qf'))"/>
+
+    <input type="hidden" name="mm"
+           value="$esc.html($request.params.get('mm'))"/>
+
+    <input type="hidden" name="curHost"
+           value="$esc.html($request.params.get('curHost'))"/>
+
+    <input type="hidden" name="message_label"
+           value="$esc.html($request.params.get('message_label'))"/>
+
+    #foreach($fq in $request.params.getParams('fq'))
+        #if ($fq && $fq != "")
+            <input type="hidden" name="fq"
+                   value="$esc.html($fq)"/>
+        #end
+    #end
+
+    #foreach($facet_field in $request.params.getParams('facet.field'))
+        #if ($facet_field && $facet_field != "")
+            <input type="hidden" name="facet.field"
+                   value="$esc.html($facet_field)"/>
+        #end
+    #end
+
+    <input id="fqEnd" type="hidden"/>
+
 </form>
+
 <br>
 <div class="navigators">
   #parse("facets.vm")
