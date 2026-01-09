@@ -6,7 +6,7 @@
 #set($resultCountStr = $number.format("#*,*", $page.results_found))
 #set($pageStr = $number.format("#*,*", $page.current_page_number))
 #set($pageCountStr = $number.format("#*,*", $page.page_count))
-Query condition: <span style="color:brown;">$request.params.get('message_label')</span>
+Query condition: <span style="color:brown;">$esc.html($request.params.get('message_label'))</span>
 ###parse('queryCuration.vm')
 <div class="result-terms" #annTitle("Lists out the &fq filters.  Click to remove.")>
     #if ($params.getParams('fq'))
