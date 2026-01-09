@@ -1,16 +1,14 @@
 #set($nih_url = "http://www.ncbi.nlm.nih.gov/pubmed/" + $doc.getFieldValue('pmid'))
 #set($dbSnp_base="http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=")
 #set( $pmid =  $doc.getFieldValue('pmid') )
-###set( $isRead = $import.read("http://localhost:8080/QueryBuilder/getAbstractVisited/?PmId=$pmid"))
-#set( $isRead ="")
+############set( $isRead = $import.read("http://localhost:8080/QueryBuilder/getAbstractVisited/?PmId=$pmid"))
+###########if ($curServer)
+###########set( $curatable = $import.read("http://localhost:8080/QueryBuilder/getCuratable/?PmId=$pmid&userKey=$userKey"))
+###########else
+###########set( $curatable = $import.read("http://localhost:8080/QueryBuilder/getCuratable/?PmId=$pmid"))
+#############end
 
-#if ($curServer)
-##set( $curatable = $import.read("http://localhost:8080/QueryBuilder/getCuratable/?PmId=$pmid&userKey=$userKey"))
-#else
-##set( $curatable = $import.read("http://localhost:8080/QueryBuilder/getCuratable/?PmId=$pmid"))
-#end
-
-<div class="result-citation">$hitCount. <a href="javascript:openParent('$pmid');"><img src="https://pipelines.rgd.mcw.edu/rgdCuration/icons/basket_add.png"></a>&nbsp;&nbsp;&nbsp;PMID: 
+<div class="result-citation">$hitCount. <a href="javascript:openParent('$pmid');"><img src="https://pipelines.rgd.mcw.edu/rgdCuration/icons/basket_add.png"></a>&nbsp;&nbsp;&nbsp;PMID:
 #set($pub_type=$doc.getFieldValue('p_type'))
 #set($is_review=false)
 #if ($pub_type && $pub_type.size()>0)
@@ -24,12 +22,6 @@
 #end
 #if (!$is_review)
 $pmid &nbsp;&nbsp;
-#if ($doc.getFieldValue('p_type').toString().contains('Retraction'))
-  &nbsp;&nbsp; <span style="color:red;font-weight:bold">#field('p_type')</span>
-    #else
-      &nbsp;&nbsp; <i>#field('p_type')</i>
-    #end
-           
 #end
 &nbsp;&nbsp; <a href="javascript:void(0)" onclick="openPubmed($pmid,'$nih_url');" class="ext_url">NCBI page</a>  
 #if ($doc.getFieldValue('pmc_id_s'))
@@ -45,9 +37,9 @@ $pmid &nbsp;&nbsp;
 <span id="annD$doc.getFieldValue('pmid')" style="float:right; display:none;" visibility="hidden">D </span>&nbsp;&nbsp;
 <span id="annC$doc.getFieldValue('pmid')" style="float: right; display:none;" visibility="hidden">C </span>&nbsp;
 <!--span id="curSpan$doc.getFieldValue('pmid')" style="float: right; ">Not Curatable:<input id="curatable$doc.getFieldValue('pmid')" type="checkbox" -->
-##if ($curatable == 'N') 
-##checked
-###end
+############if ($curatable == 'N') 
+#########checked
+###########end
 <!--/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      </span-->
 <script>
 $("#curatable$doc.getFieldValue('pmid')").change(function() {
@@ -88,13 +80,13 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 ###set( $epub_date = $dateTool.format("MMM dd yyyy", $doc.getFieldValue('epub_date')))
 ###set( $j_date = $doc.getFieldValue('j_date_s'))
 ##<div><font size=2>$title_text</font></div>
-###if ($curatable == 'N') 
-<!--div id="til_$pmid" class="result-title-not-curatable">#field('title')</div-->
-###else
+#if ($curatable == 'N') 
+<div id="til_$pmid" class="result-title-not-curatable">#field('title')</div>
+#else
 <div id="til_$pmid" class="result-title">#field('title')</div>
-###end
+#end
       #if ($abstract_text.length() > 0 || $doc.getFieldValue('mesh_terms')) 
-<div><b><font size="2"><a id="butAbstract_$pmid" href="#a_$pmid" class="but_url" onclick="annRefreshInterval = 0; if ($('#abs_$pmid').is(':visible')) {$('#abs_$pmid').hide('fast');  $.ajax({url:'$curLogServer/QueryBuilder/setAbstractVisited?action=close&PmId=$pmid&userKey=$userKey&userFullName=$userFullName'}); } else {$('#abs_$pmid').show('fast'); $.ajax({url:'$curLogServer/QueryBuilder/setAbstractVisited?action=open&PmId=$pmid&userKey=$userKey&userFullName=$userFullName'}); }; ">Abstract and other fields</a></font>
+<div><b><font size="2"><a id="butAbstract_$pmid" href="#a_$pmid" class="but_url" onclick="annRefreshInterval = 0; if ($('#abs_$pmid').is(':visible')) {$('#abs_$pmid').hide('fast');  $.ajax({url:''}); } else {$('#abs_$pmid').show('fast'); $.ajax({url:''}); }; ">Abstract and other fields</a></font>
 #if ($isRead.trim().length() > 0)
 #set ( $todayStr=$date.get("yyyy/MM/dd"))
 #set ( $stringList = $isRead.split("[|]") )
@@ -142,7 +134,7 @@ $authors
  </div>
 
 <div class="result-citation">#field('citation')</div>
-<span style="font-weight:bold;color:orange;">ABSTRACT</span><div id="abstext_$pmid" class="abs_body">$abstract_text.replaceAll('\n', '')</div>
+<span style="font-weight:bold;color:orange;">ABSTRACT</span><div id="abstext_$pmid" class="abs_body">$abstract_text.replaceAll('\n', '<br><br>')</div>
 #if ($doc.getFieldValue('mesh_terms'))
 <font size=2>MeSH Terms: </font>#field('mesh_terms')
 #end
@@ -464,7 +456,7 @@ $authors
 #set ($organism_count_values = $doc.getFieldValue('organism_count'))
 #set ($organism_pos = $doc.getFieldValue('organism_pos'))
 <div class="result-terms">Organism: 
-#set ($value_length = $organism_term.size() - 1)
+#set ($value_length = $organism_id.size() - 1)
 #foreach ($i in [0..$value_length])
 #set ($term_value=$organism_term.get($i))
 #set ($id_value=$organism_id.get($i))
