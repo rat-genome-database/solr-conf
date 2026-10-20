@@ -129,14 +129,14 @@
                             </td>
 
                             <td align="right" style="color:white;" valign="center" colspan="3">
-
-                                <a href="https://rgd.mcw.edu//tu">Help</a>&nbsp;|&nbsp;
+                                <a href="https://rgd.mcw.edu/wg/registration-entry/">Submit Data</a>&nbsp;|&nbsp;
+                                <a href="https://rgd.mcw.edu/wg/help3">Help</a>&nbsp;|&nbsp;
                                 <a href="https://rgd.mcw.edu//wg/home/rgd_rat_community_videos/">Video Tutorials</a>&nbsp;|&nbsp;
                                 <a href="https://rgd.mcw.edu//wg/com-menu/poster_archive/">News</a>&nbsp;|&nbsp;
                                 <a href="https://rgd.mcw.edu//wg/home/rat-genome-database-publications">Publications</a>&nbsp;|&nbsp;
 
                                 <a href="https://download.rgd.mcw.edu">Download</a>&nbsp;|&nbsp;
-                                <a href="https://rest.rgd.mcw.edu/rgdws/swagger-ui.html">REST API</a>&nbsp;|&nbsp;
+                                <a href="https://rest.rgd.mcw.edu/rgdws/swagger-ui/index.html">REST API</a>&nbsp;|&nbsp;
                                 <a href="https://rgd.mcw.edu//wg/citing-rgd">Citing RGD</a>&nbsp;|&nbsp;
                                 <a href="${rgdWebUrl}/contact/contactus.html">Contact</a>&nbsp;&nbsp;&nbsp;
 
@@ -171,6 +171,8 @@
 
                                         <div class="rgd-dropdown-content">
                                             <a href="${rgdWebUrl}/search/genes.html?100">Genes</a>
+                                            <a href="${rgdWebUrl}/rgdweb/search/variants.html">Variants</a>
+                                            <a href="${rgdWebUrl}/projects/project.html">Community Projects</a>
                                             <a href="${rgdWebUrl}/search/qtls.html?100">QTLs</a>
                                             <a href="${rgdWebUrl}/search/strains.html?100">Strains</a>
                                             <a href="${rgdWebUrl}/search/markers.html?100">Markers</a>
@@ -189,17 +191,20 @@
 
                                         <div class="rgd-dropdown-content">
                                             <a href="/QueryBuilder" >OntoMate (Literature Search) </a>
-                                            <a href="https://rgd.mcw.edu/jbrowse/">JBrowse (Genome Browser)</a>
+                                            <a href="${rgdWebUrl}/jbrowse2/listing.jsp">JBrowse (Genome Browser)</a>
                                             <a href="${rgdWebUrl}/front/config.html">Variant Visualizer</a>
+                                            <a href="${rgdWebUrl}/enrichment/start.html">Multi-Ontology Enrichment (MOET)</a>
+                                            <a href="${rgdWebUrl}/ortholog/start.html">Gene-Ortholog Location Finder (GOLF)</a>
+
                                             <a href="${rgdWebUrl}/cytoscape/query.html">InterViewer (Protein-Protein Interactions)</a>
                                             <a href="${rgdWebUrl}/phenominer/home.jsp">PhenoMiner (Quatitative Phenotypes)</a>
                                             <a href="${rgdWebUrl}/ga/start.jsp">Gene Annotator</a>
                                             <a href="${rgdWebUrl}/generator/list.html">OLGA (Gene List Generator)</a>
-                                            <a href="http://ratmine.mcw.edu/ratmine/begin.do">RatMine</a>
+                                            <a href="https://www.alliancegenome.org/bluegenes/alliancemine">AllianceMine</a>
                                             <a href="${rgdWebUrl}/gTool/Gviewer.jsp">GViewer (Genome Viewer)</a>
-                                            <a href="${rgdWebUrl}/overgo/find.html">Overgo Probe Designer</a>
-                                            <a href="https://rgd.mcw.edu/ACPHAPLOTYPER/">ACP Haplotyper</a>
-                                            <a href="https://rgd.mcw.edu/GENOMESCANNER/">Genome Scanner</a>
+##                                            <a href="${rgdWebUrl}/overgo/find.html">Overgo Probe Designer</a>
+##                                            <a href="https://rgd.mcw.edu/ACPHAPLOTYPER/">ACP Haplotyper</a>
+##                                            <a href="https://rgd.mcw.edu/GENOMESCANNER/">Genome Scanner</a>
                                         </div>
                                     </div>
                                     <div class="rgd-dropdown">
@@ -208,18 +213,22 @@
                                         </button>
 
                                         <div class="rgd-dropdown-content">
-                                            <a href="${rgdCurationUrl}/?module=portal&func=show&name=aging">Aging & Age-Related Disease</a>
-                                            <a href="${rgdCurationUrl}/?module=portal&func=show&name=cancer">Cancer</a>
-                                            <a href="${rgdCurationUrl}/?module=portal&func=show&name=cardio">Cardiovascular Disease</a>
-                                            <a href="${rgdCurationUrl}/?module=portal&func=show&name=develop">Developmental Disease</a>
-                                            <a href="${rgdCurationUrl}/?module=portal&func=show&name=diabetes">Diabetes</a>
-                                            <a href="${rgdCurationUrl}/?module=portal&func=show&name=blood">Hematologic Disease</a>
-                                            <a href="${rgdCurationUrl}/?module=portal&func=show&name=immune">Immune & Inflammatory Disease</a>
-                                            <a href="${rgdCurationUrl}/?module=portal&func=show&name=nuro">Neurological Disease</a>
-                                            <a href="${rgdCurationUrl}/?module=portal&func=show&name=obesity">Obesity & Metabolic Syndrome</a>
-                                            <a href="${rgdCurationUrl}/?module=portal&func=show&name=renal">Renal Disease</a>
-                                            <a href="${rgdCurationUrl}/?module=portal&func=show&name=respir">Respiratory Disease</a>
-                                            <a href="${rgdCurationUrl}/?module=portal&func=show&name=sensory">Sensory Organ Disease</a>
+                                            <a href="${rgdWebUrl}/portal/home.jsp?p=1">Aging & Age-Related Disease</a>
+                                            <a href="${rgdWebUrl}/rgdweb/portal/home.jsp?p=16">Behavioral & Substance Use Disorder</a>
+                                            <a href="${rgdWebUrl}/portal/home.jsp?p=2">Cancer & Neoplastic Disease</a>
+                                            <a href="${rgdWebUrl}/portal/home.jsp?p=3">Cardiovascular Disease</a>
+                                            <a href="${rgdWebUrl}/portal/home.jsp?p=14">Coronavirus Disease</a>
+                                            <a href="${rgdWebUrl}/portal/home.jsp?p=12">Developmental Disease</a>
+                                            <a href="${rgdWebUrl}/portal/home.jsp?p=4">Diabetes</a>
+                                            <a href="${rgdWebUrl}/portal/home.jsp?p=5">Hematologic Disease</a>
+                                            <a href="${rgdWebUrl}/portal/home.jsp?p=6">Immune & Inflammatory Disease</a>
+                                            <a href="${rgdWebUrl}/portal/home.jsp?p=15">Infectious Disease</a>
+                                            <a href="${rgdWebUrl}/portal/home.jsp?p=13">Liver Disease</a>
+                                            <a href="${rgdWebUrl}/portal/home.jsp?p=7">Neurological Disease</a>
+                                            <a href="${rgdWebUrl}/portal/home.jsp?p=8">Obesity & Metabolic Syndrome</a>
+                                            <a href="${rgdWebUrl}/portal/home.jsp?p=9">Renal Disease</a>
+                                            <a href="${rgdWebUrl}/portal/home.jsp?p=10">Respiratory Disease</a>
+                                            <a href="${rgdWebUrl}/portal/home.jsp?p=11">Sensory Organ Disease</a>
                                         </div>
                                     </div>
                                     <div class="rgd-dropdown">
@@ -234,8 +243,9 @@
                                             <a href="${rgdWebUrl}/phenominer/home.jsp">PhenoMiner (Quantitative Phenotypes)</a>
                                             <a href="${rgdWebUrl}/phenominer/phenominerExpectedRanges/views/home.html">Expected Ranges (Quantitative Phenotype)</a>
                                             <a href="${rgdWebUrl}/pa/termCompare.html?term1=RS%3A0000457&term2=CMO%3A0000000&countType=rec&species=3">Phenominer Term Comparison</a>
+                                            <a href="https://rgd.mcw.edu/wg/hrdp_panel/">Hybrid Rat Diversity Panel</a>
                                             <a href="https://rgd.mcw.edu/wg/phenotype-data13/">Phenotypes</a>
-                                            <a href="https://rgd.mcw.edu/wg/gerrc/">GERRC (Gene Editing Rat Resource Center)</a>
+##                                            <a href="https://rgd.mcw.edu/wg/gerrc/">GERRC (Gene Editing Rat Resource Center)</a>
                                             <a href="https://rgd.mcw.edu/wg/physiology/additionalmodels/">Phenotypes in Other Animal Models</a>
                                             <a href="https://rgd.mcw.edu/wg/strain-maintenance/">Animal Husbandry</a>
                                             <a href="https://rgd.mcw.edu/wg/physiology/strain-medical-records/">Strain Medical Records</a>
@@ -256,7 +266,7 @@
                                         </button>
 
                                         <div class="rgd-dropdown-content">
-                                            <a href="http://mailman.mcw.edu/mailman/listinfo/rat-forum">Rat Community Forum</a>
+                                            <a href="https://rgd.mcw.edu/wg/rat_forum_invite">Rat Community Forum</a>
                                             <a href="https://rgd.mcw.edu/wg/com-menu/directory-of-rat-laboratories2/">Directory of Rat Laboratories</a>
                                             <a href="https://rgd.mcw.edu/wg/home/rgd_rat_community_videos/">Video Tutorials</a>
                                             <a href="https://rgd.mcw.edu/wg/news2/">News</a>
