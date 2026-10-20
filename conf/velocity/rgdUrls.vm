@@ -1,0 +1,45 @@
+#*
+  Base URLs of the RGD resources these templates link to.  This is the one place
+  they are spelled out - every template takes its value from here.
+
+  The Solr browse UI is served from two servers:
+    - dev, where rgdweb.war and rgdCuration are deployed on the same host, so a
+      relative URL resolves
+    - ontomate, which serves Solr only and must point at the production webapps
+
+  Each value can be overridden per server by a system property on the Solr JVM,
+  plumbed through the "invariants" of the /browse handler in solrconfig.xml:
+
+    -Drgdweb.url=/rgdweb
+    -DrgdCuration.url=/rgdCuration
+    -Dsolr.base.url=https://dev.rgd.mcw.edu/solr
+
+  They are invariants rather than defaults so that a client cannot inject its own
+  value through a query parameter and rewrite every link on the rendered page.
+  When a property is unset - or a template is rendered through a handler that does
+  not pin the invariants - the defaults below apply.
+*#
+## Base URL of rgdweb.war, no trailing slash.  Defaults to the absolute production
+## URL because that one is valid from either server.
+#if($request.params.get("rgdWebUrl") && $request.params.get("rgdWebUrl") != "")
+#set($rgdWebUrl = $request.params.get("rgdWebUrl"))
+#else
+#set($rgdWebUrl = "https://rgd.mcw.edu/rgdweb")
+#end
+##
+## Base URL of the rgdCuration webapp, no trailing slash.  Same reasoning.
+#if($request.params.get("rgdCurationUrl") && $request.params.get("rgdCurationUrl") != "")
+#set($rgdCurationUrl = $request.params.get("rgdCurationUrl"))
+#else
+#set($rgdCurationUrl = "https://rgd.mcw.edu/rgdCuration")
+#end
+##
+## Base URL of this Solr server, no trailing slash.  Used both for browser-side
+## lookups against the OntoSolr core and for server-side $import.read calls, which
+## need an absolute URL.  Every server must point at its own Solr, so there is no
+## value that is correct everywhere - set solr.base.url on each one.
+#if($request.params.get("solrUrl") && $request.params.get("solrUrl") != "")
+#set($solrUrl = $request.params.get("solrUrl"))
+#else
+#set($solrUrl = "https://ontomate.rgd.mcw.edu/solr")
+#end

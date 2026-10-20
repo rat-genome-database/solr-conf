@@ -10,7 +10,7 @@
 ##set( $curatable = $import.read("http://localhost:8080/QueryBuilder/getCuratable/?PmId=$pmid"))
 #end
 
-<div class="result-citation">$hitCount. <a href="javascript:openParent('$pmid');"><img src="https://dev.rgd.mcw.edu/rgdCuration/icons/basket_add.png"></a>&nbsp;&nbsp;&nbsp;PMID:
+<div class="result-citation">$hitCount. <a href="javascript:openParent('$pmid');"><img src="${rgdCurationUrl}/icons/basket_add.png"></a>&nbsp;&nbsp;&nbsp;PMID:
 #set($pub_type=$doc.getFieldValue('p_type'))
 #set($is_review=false)
 #if ($pub_type && $pub_type.size()>0)
@@ -39,7 +39,7 @@ $pmid &nbsp;&nbsp;
    #set ($doiUrl="http://dx.doi.org/"+$doc.getFieldValue('doi_s'))
    <b> <a href="javascript:void(0)" onclick="openFullText($pmid,'$doiUrl');" class="ext_url">Full Text Article via DOI</a></b>
 #end
-<a href="https://$curHost/rgdweb/pubmed/getReference.html?pmid=$doc.getFieldValue('pmid')&type=redirect" target="_blank"><img id="rgdLogo$pmid" src="https://$curHost/rgdweb/pubmed/rgdLogo.png?pmid=$doc.getFieldValue('pmid')" alt="" width="90" height="30"></a>
+<a href="${rgdWebUrl}/pubmed/getReference.html?pmid=$doc.getFieldValue('pmid')&type=redirect" target="_blank"><img id="rgdLogo$pmid" src="${rgdWebUrl}/pubmed/rgdLogo.png?pmid=$doc.getFieldValue('pmid')" alt="" width="90" height="30"></a>
 <span id="annP$doc.getFieldValue('pmid')" style="float: right; display:none;">P </span>
 <span id="annF$doc.getFieldValue('pmid')" style="float: right; display:none;" visibility="hidden">F </span>
 <span id="annD$doc.getFieldValue('pmid')" style="float:right; display:none;" visibility="hidden">D </span>&nbsp;&nbsp;
@@ -168,7 +168,7 @@ $authors
 #set ($id_value=$rgd_id_values.get($i))
 #set ($count_value=$rgd_count_values.get($i))
 ###set ($pos_value=$organism_pos.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/report/gene/main.html?id=$id_value" onmouseover="highlightTerm1('$pmid','$pos_value')" onmouseout="removeHighlight('$pmid')">$term_value <$count_value></a>
+<a href="${rgdWebUrl}/report/gene/main.html?id=$id_value" onmouseover="highlightTerm1('$pmid','$pos_value')" onmouseout="removeHighlight('$pmid')">$term_value <$count_value></a>
 &nbsp;&nbsp;&nbsp;
 #end
 </div>
@@ -234,7 +234,7 @@ $authors
 #set ($term_value=$chebi_term_values.get($i))
 #set ($id_value=$chebi_id_values.get($i))
 #set ($count_value=$chebi_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')">$term_value <$count_value></a>
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')">$term_value <$count_value></a>
 &nbsp;&nbsp;&nbsp;
 #end
 </div>
@@ -346,7 +346,7 @@ $authors
 #set ($id_value=$so_id_values.get($i))
 #set ($count_value=$so_count_values.get($i))
 #addTerm($id_value)
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')">$term_value <$count_value></a>
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')">$term_value <$count_value></a>
 &nbsp;&nbsp;&nbsp;
 #end
 </div>
@@ -378,7 +378,7 @@ $authors
 #set ($id_value=$ma_id_values.get($i))
 #set ($count_value=$ma_count_values.get($i))
 #addTerm($id_value)
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')">$term_value <$count_value></a>
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')">$term_value <$count_value></a>
 &nbsp;&nbsp;&nbsp;
 #end
 </div>

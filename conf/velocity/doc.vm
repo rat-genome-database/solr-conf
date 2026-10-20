@@ -16,7 +16,7 @@
 #end
 &nbsp;
 &nbsp;
-<a href="https://rgd.mcw.edu/rgdweb/pubmed/getReference.html?pmid=$doc.getFieldValue('pmid')&type=redirect" target="_blank"><img src="https://rgd.mcw.edu/rgdweb/pubmed/rgdLogo.png?pmid=$doc.getFieldValue('pmid')" alt="" width="90" height="30"></a>
+<a href="${rgdWebUrl}/pubmed/getReference.html?pmid=$doc.getFieldValue('pmid')&type=redirect" target="_blank"><img src="${rgdWebUrl}/pubmed/rgdLogo.png?pmid=$doc.getFieldValue('pmid')" alt="" width="90" height="30"></a>
 <span id="annP$doc.getFieldValue('pmid')" style="float: right;">P </span>
 <span id="annF$doc.getFieldValue('pmid')" style="float: right;">F </span>
 <span id="annD$doc.getFieldValue('pmid')" style="float:right;">D </span>&nbsp;&nbsp;
@@ -93,7 +93,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 	#end
 #end
 #set ($count_value=$rdo_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$display_term</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$display_term</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -109,7 +109,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 ##set ($id_value=$rgd_id_values.get($i))
 ##set ($count_value=$rgd_count_values.get($i))
 ###set ($pos_value=$organism_pos.get($i))
-##<a href="https://rgd.mcw.edu/rgdweb/report/gene/main.html?id=$id_value" onmouseover="highlightTerm1('$pmid','$pos_value')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+##<a href="${rgdWebUrl}/report/gene/main.html?id=$id_value" onmouseover="highlightTerm1('$pmid','$pos_value')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 ##end
 ##</div>
 ##end
@@ -178,7 +178,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$bp_term_values.get($i))
 #set ($id_value=$bp_id_values.get($i))
 #set ($count_value=$bp_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -193,7 +193,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$bp_term_values.get($i))
 #set ($id_value=$bp_id_values.get($i))
 #set ($count_value=$bp_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -211,7 +211,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$chebi_term_values.get($i))
 #set ($id_value=$chebi_id_values.get($i))
 #set ($count_value=$chebi_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -226,7 +226,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$mf_term_values.get($i))
 #set ($id_value=$mf_id_values.get($i))
 #set ($count_value=$mf_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -241,7 +241,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$cc_term_values.get($i))
 #set ($id_value=$cc_id_values.get($i))
 #set ($count_value=$cc_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -256,7 +256,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$ctd_term_values.get($i))
 #set ($id_value='RDO:'+$ctd_id_values.get($i).substring(4,11))
 #set ($count_value=$ctd_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -292,7 +292,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$rs_term_values.get($i))
 #set ($id_value=$rs_id_values.get($i))
 #set ($count_value=$rs_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -307,7 +307,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$cmo_term_values.get($i))
 #set ($id_value=$cmo_id_values.get($i))
 #set ($count_value=$cmo_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -322,7 +322,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$mmo_term_values.get($i))
 #set ($id_value=$mmo_id_values.get($i))
 #set ($count_value=$mmo_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -337,7 +337,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$xco_term_values.get($i))
 #set ($id_value=$xco_id_values.get($i))
 #set ($count_value=$xco_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -352,7 +352,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$so_term_values.get($i))
 #set ($id_value=$so_id_values.get($i))
 #set ($count_value=$so_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -367,7 +367,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$pw_term_values.get($i))
 #set ($id_value=$pw_id_values.get($i))
 #set ($count_value=$pw_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -382,7 +382,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$ma_term_values.get($i))
 #set ($id_value=$ma_id_values.get($i))
 #set ($count_value=$ma_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -397,7 +397,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$cl_term_values.get($i))
 #set ($id_value=$cl_id_values.get($i))
 #set ($count_value=$cl_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -412,7 +412,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$mp_term_values.get($i))
 #set ($id_value=$mp_id_values.get($i))
 #set ($count_value=$mp_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end
@@ -427,7 +427,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 #set ($term_value=$nbo_term_values.get($i))
 #set ($id_value=$nbo_id_values.get($i))
 #set ($count_value=$nbo_count_values.get($i))
-<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
+<a href="${rgdWebUrl}/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$term_value</a>&nbsp;&nbsp;
 #end
 </div>
 #end

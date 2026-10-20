@@ -1,3 +1,4 @@
+#parse("rgdUrls.vm")
 #set($searcher=$request.searcher)
 #set($params=$request.params)
 #set($clusters = $response.response.clusters)
@@ -31,9 +32,9 @@ Query condition: <span style="color:brown;">$request.params.get('message_label')
 ##                     #set ($fieldValue=$fq.substring($math.add($fq.indexOf(':'),2), $math.sub($fq.length(),1)))
 ##
 ##                     #if($fieldType && $fieldType == "_id" && $fieldValue != '*')
-##                         #set($fieldValue=$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
+##                         #set($fieldValue=$import.read("${solrUrl}/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
 ##                     #end
-##                     #set($fq=$import.read("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+": "+$fieldValue)
+##                     #set($fq=$import.read("${solrUrl}/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+": "+$fieldValue)
 ##                    ###set($fq=$import.read("https://dev.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)")+":"+$import.read("https://dev.rgd.mcw.edu/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)"))
 ##                 #if ($foreach.count < $params.getParams('fq').size())
 ##                     &gt; <a href="javascript:facetQueryPath($previous_fq_count)">$fq</a>
@@ -75,11 +76,11 @@ $(document).ready(function () {
 
             var fieldTypeIdVal='';
             if('$fieldType'=='_id'){
-                $.get("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)", function (data) {
+                $.get("${solrUrl}/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)", function (data) {
                     fieldTypeIdVal+=data
                 })
             }
-            $.get("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)", function (data) {
+            $.get("${solrUrl}/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)", function (data) {
                 #if ($previous_fq_count < $params.getParams('fq').size())
                     if('$fieldType'=='_id') {
                         innerHTML += "><a href='javascript:facetQueryPath($previous_fq_count)'>" + data + ":" + fieldTypeIdVal + "</a>"
@@ -161,7 +162,7 @@ function setAnn(pmid, aspect, data) {
 
 function getAnn(pmid, aspect) {
   host = getParameterByName('curHost');
-  $.ajax({url:"https://"+host+"/rgdweb/webservice/refAnnots.html?pmid="+pmid+"&aspect="+aspect+"&jsonp="+aspect+"_"+pmid, dataType: 'jsonp'});
+  $.ajax({url:"https://"+host+"${rgdWebUrl}/webservice/refAnnots.html?pmid="+pmid+"&aspect="+aspect+"&jsonp="+aspect+"_"+pmid, dataType: 'jsonp'});
 }
 
   var annRefreshInterval = 3000;
@@ -172,7 +173,7 @@ function getAnnRefreshAll(pmid) {
   getAnn(pmid, "F");
   getAnn(pmid, "P");
   var d = new Date();
-  $("#rgdLogo"+pmid).attr("src", "https://$curHost/rgdweb/pubmed/rgdLogo.png?pmid="+pmid+"&"+d.getTime());
+  $("#rgdLogo"+pmid).attr("src", "${rgdWebUrl}/pubmed/rgdLogo.png?pmid="+pmid+"&"+d.getTime());
   if (annRefreshInterval > 0) {
     setTimeout(function() {
         getAnnRefreshAll(pmid);
@@ -215,7 +216,7 @@ function addTermToParent(pmid, ontoTerm) {
 
 function searchGene(pmid, gene) {
   host = getParameterByName('curHost');
-  $.ajax({url:'https://dev.rgd.mcw.edu/solr/OntoSolr/select?wt=csv&fq=cat:(%22RGD_GENE%22)&fl=term&csv.header=false&&rows=1&q='+gene}).done(function(data){
+  $.ajax({url:'${solrUrl}/OntoSolr/select?wt=csv&fq=cat:(%22RGD_GENE%22)&fl=term&csv.header=false&&rows=1&q='+gene}).done(function(data){
 
   window.opener.location.href="http://" + host + "/rgdCuration/?matchType=equals&objectType=14&submitBtn=Search+for+Object&hiddenXYZ123=&module=curation&func=searchObjects&objectName=" + data;
   window.opener.focus();

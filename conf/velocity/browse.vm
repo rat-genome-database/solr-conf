@@ -1,3 +1,4 @@
+#parse("rgdUrls.vm")
 #set($searcher=$request.searcher)
 #set($params=$request.params)
 #set($clusters = $response.response.clusters)
@@ -45,11 +46,11 @@ Did you mean <a href="#url_for_home?q=$esc.url($response.response.spellcheck.sug
 
                 var fieldTypeIdVal='';
                 if('$fieldType'=='_id'){
-                    $.get("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)", function (data) {
+                    $.get("${solrUrl}/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldValue%22)", function (data) {
                        fieldTypeIdVal+=data
                     })
                 }
-                $.get("https://dev.rgd.mcw.edu/solr/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)", function (data) {
+                $.get("${solrUrl}/OntoSolr/select?v.template=termsstring&wt=velocity&q=id:(%22$fieldName%22)", function (data) {
                     #if ($previous_fq_count < $params.getParams('fq').size())
                     if('$fieldType'=='_id') {
                         innerHTML += "><a href='javascript:facetQueryPath($previous_fq_count)'>" + data + ":" + fieldTypeIdVal + "</a>"
@@ -113,7 +114,7 @@ Did you mean <a href="#url_for_home?q=$esc.url($response.response.spellcheck.sug
     //return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     //}
     function getAnn(pmid, aspect) {
-        $.ajax({url:"https://rgd.mcw.edu/rgdweb/webservice/refAnnots.html?pmid="+pmid+"&aspect="+aspect+"&jsonp="+aspect+"_"+pmid, dataType: 'jsonp'});
+        $.ajax({url:"${rgdWebUrl}/webservice/refAnnots.html?pmid="+pmid+"&aspect="+aspect+"&jsonp="+aspect+"_"+pmid, dataType: 'jsonp'});
     }
     function getParameterByName(name) {
         return "$request.params.get('curHost')";
