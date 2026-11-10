@@ -1,3 +1,4 @@
+#parse('rgdUrls.vm')
 #set($nih_url = "http://www.ncbi.nlm.nih.gov/pubmed/" + $doc.getFieldValue('pmid'))
 #set($dbSnp_base="http://www.ncbi.nlm.nih.gov/projects/SNP/snp_ref.cgi?rs=")
 #set( $pmid =  $doc.getFieldValue('pmid') )
