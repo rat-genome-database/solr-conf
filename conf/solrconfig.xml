@@ -194,7 +194,7 @@
 
      <!-- Base URLs of the RGD webapps the Velocity templates link to.
           Left empty here so the defaults live in one place, velocity/rgdUrls.vm;
-          override per server with -Drgdweb.url / -DrgdCuration.url / -Dsolr.base.url
+          override per server with -Drgdweb.url / -DrgdCuration.url / -Drgd.solr.url
           in the Solr start options (e.g. -Drgdweb.url=/rgdweb on a server where
           rgdweb.war is deployed alongside Solr).
           These are invariants, not defaults, so a client cannot inject its own value
@@ -202,7 +202,7 @@
      <lst name="invariants">
        <str name="rgdWebUrl">${rgdweb.url:}</str>
        <str name="rgdCurationUrl">${rgdCuration.url:}</str>
-       <str name="solrUrl">${solr.base.url:}</str>
+       <str name="solrUrl">${rgd.solr.url:}</str>
      </lst>
 
      <!-- append spellchecking to our list of components -->

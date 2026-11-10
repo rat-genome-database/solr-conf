@@ -452,7 +452,7 @@ $authors
 #end
 #end
 #set ($count_value=$rdo_count_values.get($i))
-#addTerm($id_value)&nbsp;$rdo_hl_start<a href="javascript:search_term_in_parent('$term_value', '$id_value')" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')">$term_value <$count_value></a>$rdo_hl_end
+#if ($id_value != 'DOID:4')#addTerm($id_value)&nbsp;$rdo_hl_start<a href="javascript:search_term_in_parent('$term_value', '$id_value')" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')">$term_value <$count_value></a>$rdo_hl_end#else$rdo_hl_start<span onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')">$term_value <$count_value></span>$rdo_hl_end#end
 &nbsp;&nbsp;&nbsp;
 #end
 </div>
