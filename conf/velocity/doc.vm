@@ -93,8 +93,7 @@ function P_$doc.getFieldValue('pmid')(data) { setAnn("$doc.getFieldValue('pmid')
 	#end
 #end
 #set ($count_value=$rdo_count_values.get($i))
-#if ($id_value != 'DOID:4')<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$display_term</a>#else<span onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')">$display_term</span>#end&nbsp;&nbsp;
-#end
+  #if ($id_value != 'DOID:4')<a href="https://rgd.mcw.edu/rgdweb/ontology/annot.html?acc_id=$id_value" onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')"  style="text-decoration:underline">$display_term</a>#else<span onmouseover="highlightTerm('$pmid','$esc.javascript($term_value)')" onmouseout="removeHighlight('$pmid')">$display_term</span>#end&nbsp;&nbsp;#end
 </div>
 #end
 
