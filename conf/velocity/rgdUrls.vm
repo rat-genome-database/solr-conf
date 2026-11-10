@@ -1,46 +1,39 @@
-#*
-  Base URLs of the RGD resources these templates link to.  This is the one place
-  they are spelled out - every template takes its value from here.
-
-  The Solr browse UI is served from two servers:
-    - dev (hansen), where rgdweb.war and rgdCuration are deployed on the same host,
-      so a relative URL resolves
-    - ontomate, which serves Solr only and must point at the production webapps
-
-  THE VALUES BELOW ARE PER-DEPLOYMENT.  This branch targets dev; the production
-  branch must keep the absolute https://rgd.mcw.edu/... forms, because a relative
-  URL only resolves where rgdweb.war is actually deployed.
-
-  They can also be overridden per server, without editing this file, by a system
-  property on the Solr JVM - plumbed through the "invariants" of the /browse handler
-  in solrconfig.xml, which wins over anything a client sends:
-
-    -Drgdweb.url=/rgdweb
-    -DrgdCuration.url=/rgdCuration
-    -Drgd.solr.url=https://dev.rgd.mcw.edu/solr
-
-  That route needs write access to the Solr start options, so it is optional; when
-  the properties are unset the values below apply.
-*#
-## Base URL of rgdweb.war, no trailing slash.
-#if($request.params.get("rgdWebUrl") && $request.params.get("rgdWebUrl") != "")
-#set($rgdWebUrl = $request.params.get("rgdWebUrl"))
-#else
-#set($rgdWebUrl = "/rgdweb")
-#end
+## Base URLs of the RGD webapps these templates link to.
 ##
-## Base URL of the rgdCuration webapp, no trailing slash.
-#if($request.params.get("rgdCurationUrl") && $request.params.get("rgdCurationUrl") != "")
-#set($rgdCurationUrl = $request.params.get("rgdCurationUrl"))
-#else
-#set($rgdCurationUrl = "/rgdCuration")
-#end
+## Solr does not bind request-handler params to Velocity variables on its own - they
+## have to be pulled off $params - so every template that uses these URLs must
+## #parse this file.
 ##
-## Base URL of this Solr server, no trailing slash.  Used both for browser-side
-## lookups against the OntoSolr core and for server-side $import.read calls, which
-## need an absolute URL - so this one cannot be relative.
-#if($request.params.get("solrUrl") && $request.params.get("solrUrl") != "")
-#set($solrUrl = $request.params.get("solrUrl"))
+## Solr runs on ontomate.rgd.mcw.edu (prod) and dev.rgd.mcw.edu (dev), but rgdweb.war
+## is deployed only on rgd.mcw.edu and dev.rgd.mcw.edu, so the rgdweb host can never be
+## assumed to be the host serving this page. It is resolved in this order:
+##
+##   1. the rgdWebUrl invariant in solrconfig.xml (-Drgdweb.url in the Solr start
+##      options) - a trusted per-server setting, so it wins when present;
+##   2. the curHost request param the curation app already passes, but only when it
+##      names a host that actually has rgdweb.war. Checking it against that list keeps
+##      a client from injecting its own host and rewriting every link on the page;
+##   3. production.
+#set($rgdWebHosts = ["rgd.mcw.edu", "dev.rgd.mcw.edu"])
+#set($rgdWebUrl = $params.get('rgdWebUrl'))
+#if(!$rgdWebUrl || $rgdWebUrl == "")
+#set($curHostParam = $params.get('curHost'))
+#if($curHostParam && $curHostParam != "")
+#set($curHostLower = $curHostParam.toLowerCase())
+#end
+#if($curHostLower && $rgdWebHosts.contains($curHostLower))
+#set($rgdWebUrl = "https://${curHostLower}/rgdweb")
 #else
-#set($solrUrl = "https://dev.rgd.mcw.edu/solr")
+#set($rgdWebUrl = "https://rgd.mcw.edu/rgdweb")
+#end
+#end
+## The curation app (rgdCuration) and the Solr endpoint itself: per-server values come
+## from the rgdCurationUrl / solrUrl invariants (-DrgdCuration.url / -Drgd.solr.url).
+#set($rgdCurationUrl = $params.get('rgdCurationUrl'))
+#if(!$rgdCurationUrl || $rgdCurationUrl == "")
+#set($rgdCurationUrl = "https://pipelines.rgd.mcw.edu/rgdCuration")
+#end
+#set($solrUrl = $params.get('solrUrl'))
+#if(!$solrUrl || $solrUrl == "")
+#set($solrUrl = "https://ontomate.rgd.mcw.edu/solr")
 #end
